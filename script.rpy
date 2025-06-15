@@ -606,14 +606,17 @@ label planting_phase:
         "Mau tanam jagung (penghasilan 3 bulan, untung sedang)":
             $ money += 30000
             $ knowledge += 10
+            call maintenance_phase
             
         "Mau tanam sayuran (penghasilan 1 bulan, untung kecil tapi cepat)":
             $ money += 15000  
             $ knowledge += 5
+            call maintenance_phase
             
         "Fokus ke kopi saja (tidak ada penghasilan tambahan)":
             $ knowledge += 20
             m "Pilihan yang fokus. Tapi pastikan kamu punya cukup uang untuk hidup."
+            call maintenance_phase
 
 # =============================================================================
 # FARMING CYCLE STATE - MAINTENANCE & GROWTH
@@ -840,6 +843,7 @@ label maintenance_success:
     $ reputation += 25
     $ knowledge += 30
     
+    scene bg village_center_evening
     # Community recognition
     show villager1 at left
     with easeinleft
@@ -1028,6 +1032,7 @@ label prayer_for_rain:
         $ coffee_plants -= 15
         $ money -= 30000  # Loss from failed fruits
         m "Ini pelajaran penting tentang manajemen risiko."
+        jump first_harvest_prep
 
 # =============================================================================
 # FARMING CYCLE STATE - FIRST HARVEST
