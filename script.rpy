@@ -29,9 +29,95 @@ image bg nursery = "images/nursery.png"
 image bg coffee_plantation_rain = "images/coffee_plantation_rain.png"
 image bg coffee_plantation_growing = "images/coffee_plantation_growing.png"
 image bg coffee_plantation_month1 = "images/coffee_plantation_month1.png"
+image bg coffee_plantation_month2 = "images/coffee_plantation_month2.png"
 image bg coffee_plantation_problem = "images/coffee_plantation_problem.png"
+image bg coffee_plantation_healthy = "images/coffee_plantation_healthy.png"
+image bg coffee_plantation_pest = "images/coffee_plantation_pest.png"
 image bg coffee_plantation_old = "images/coffee_plantation_old.png"
+image bg coffee_plantation_flowering = "images/coffee_plantation_flowering.png"
+image bg coffee_plantation_young_fruits = "images/coffee_plantation_young_fruits.png"
+image bg coffee_plantation_dry_season = "images/coffee_plantation_dry_season.png"
+image bg coffee_plantation_ripe_fruits = "images/coffee_plantation_ripe_fruits.png"
+image bg coffee_plantation_after_dry_season = "images/coffee_plantation_after_dry_season.png"
+image bg coffee_plantation_expanded = "images/coffee_plantation_expanded.png"
+image bg processing_facility = "images/processing_facility.png"
+image bg drying_beds = "images/drying_beds.png"
+image bg village_market = "images/village_market.png"
+image bg village_hall = "images/village_hall.png"
+image bg kakek_house_exterior = "images/rumah_kakek.png"
+image bg community_hall = "images/community_hall1.png"
+image bg festival_preparation = "images/festival_preparation.png"
+image bg coffee_ceremony = "images/coffee_ceremony.png"
+image bg festival_day = "images/festival_day.png"
+image bg mahmud_house = "images/mahmud_house.png"
+image bg coffee_shop_grand_opening = "images/coffee_shop_grand_opening.png"
+image bg coffee_shop_construction = "images/coffee_shop_construction.png"
+image bg coffee_processing_premium = "images/coffee_processing_premium1.png"
+image bg village_meeting = "images/village_meeting.png"
+image bg training_session = "images/training_session.png"
+image bg certification_process = "images/certification_process.png"
+image bg video_call_international = "images/video_call_international1.png"
+image bg international_coffee_award = "images/international_award.png"
+image bg agrowisata_development = "images/agrowisata_development.png"
+image bg community_meeting = "images/community_meeting.png"
+image bg agricultural_school = "images/agricultural_school.png"
+image bg book_launch = "images/book_launch.png"
+image bg national_conference = "images/national_conference.png"
+image bg legislative_building = "images/legislative_building.png"
+image bg successful_business_empire = "images/successful_business_empire.png"
+image bg processing_center = "images/processing_center.png"
 
+# ARA_CHILD
+image ara_child = "images/ara_child/smile.png"
+image ara_child happy = "images/ara_child/happy.png"
+image ara_child excited = "images/ara_child/excited.png"
+image ara_child curious = "images/ara_child/curious.png"
+
+# ARA_ADULT
+image ara_adult = "images/ara_adult/smile.png"
+image ara_adult tired = "images/ara_adult/tired.png"
+image ara_adult surprised = "images/ara_adult/surprised.png"
+image ara_adult worried = "images/ara_adult/worried.png"
+image ara_adult shocked = "images/ara_adult/shocked.png"
+image ara_adult sad = "images/ara_adult/sad.png"
+image ara_adult thinking = "images/ara_adult/thinking.png"
+image ara_adult determined = "images/ara_adult/determined.png"
+image ara_adult grateful = "images/ara_adult/grateful.png"
+image ara_adult nerveous = "images/ara_adult/nerveous.png"
+image ara_adult emotional = "images/ara_adult/emotional.png"
+image ara_adult professional = "images/ara_adult/professional.png"
+image ara_adult professional emotional = "images/ara_adult/professional_emotional.png"
+
+# IBU_SARI
+image sari = "images/ibu_sari/smile.png"
+image sari concerned = "images/ibu_sari/concerned.png"
+
+# KAKEK_YOUNG
+image kakek_young = "images/kakek_young/smile.png"
+image spirit_kakek = "images/kakek_young/spirit.png"
+
+# MAHMUD
+image mahmud = "images/mahmud/smile.png"
+image mahmud advisor = "images/mahmud/smile.png"
+image mahmud concerned = "images/mahmud/concerned.png"
+image mahmud excited = "images/mahmud/excited.png"
+image mahmud proud = "images/mahmud/smile.png"
+image mahmud examining = "images/mahmud/examining.png"
+
+# KEPALA_DESA
+image kepala_desa = "images/kepala_desa/smile.png"
+image kepala_desa serious = "images/kepala_desa/serious.png"
+
+# VILLAGER
+image villager1 = "images/villager/villager1.png"
+image villager2 = "images/villager/villager2.png"
+image elder = "images/villager/elder.png"
+
+# BUYER
+image buyer = "images/buyer/smile.png"
+image buyer_international = "images/buyer/international.png"
+
+# 
 # =============================================================================
 # VARIABLES
 # =============================================================================
@@ -50,11 +136,12 @@ default harvested_beans = 0
 # INTRO STATE - CHILDHOOD FLASHBACK
 # =============================================================================
 
+default hud_visible = True
 label start:
     scene bg mountain_sunrise
     with fade
-    # play music "audio/gayo_traditional.ogg" fadeout 1.0 fadein 2.0
-    
+    play music "audio/traditional.mp3" fadeout 1.0 fadein 2.0 volume 0.5
+    show screen hud
     n "Dataran tinggi Aceh Tengah, 15 tahun yang lalu..."
     
     scene bg coffee_plantation_old
@@ -90,7 +177,8 @@ label start:
     
     k "Ingat baik-baik pelajaran hari ini, Ara."
     k "Siapa tahu suatu hari kamu harus melanjutkan warisan ini..."
-    
+    stop music fadeout 1.0
+
     scene black
     with fade
     
@@ -105,7 +193,7 @@ label start:
 label city_life:
     scene bg jakarta_office
     with fade
-    #play music "audio/city_ambience.ogg"
+    play music "audio/city.mp3" fadeout 1.0 fadein 2.0 volume 0.5
     
     show ara_adult tired at center
     with easeinbottom
@@ -118,17 +206,17 @@ label city_life:
     scene bg ara_apart
     
     # Phone rings
-    play sound "audio/phone_ring.ogg"
+    play sound "audio/phone_ringing.mp3"
     
     show ara_adult surprised
     a "Halo?"
-    
+    stop sound
     s "Ara? Ini Bu Sari, tetangga kakek di kampung."
+    stop music fadeout 1.0
     s "Kabar kurang baik, nak..."
-    
+    play music "audio/sad.mp3" fadeout 1.0 fadein 2.0 volume 0.5
     show ara_adult worried
     a "Ada apa, Bu? Kakek kenapa?"
-    
     s "Kakek Ibrahim... sudah dipanggil Yang Kuasa minggu lalu."
     s "Kami sudah coba hubungi kamu berkali-kali..."
     
@@ -179,7 +267,7 @@ label return_decision_2:
 label return_to_village:
     scene bg village_entrance
     with fade
-    play music "audio/village_ambience.ogg"
+    play music "audio/village.mp3" fadeout 1.0 fadein 2.0 volume 0.5
     
     show ara_adult at center
     with easeinright
@@ -215,22 +303,27 @@ label return_to_village:
     scene bg coffee_plantation_abandoned
     with dissolve
     
-    show ara_adult shocked
+    show ara_adult shocked at right
     a "Ya ampun... ini benar-benar parah."
     a "Rumput liar di mana-mana, pohon kopi banyak yang mati..."
+    hide ara_adult shocked
     
-    show sari concerned
+    show sari concerned at left
     s "Iya nak. Sudah 5 tahun tidak terurus dengan baik."
     s "Kakek sudah tua, tidak kuat lagi kerja berat."
     s "Kami tetangga sudah bantu semampu kami, tapi..."
+    hide sari concerned
     
-    show ara_adult determined
+    show ara_adult determined at right
     a "Bu Sari, aku akan menghidupkan kembali kebun ini!"
     a "Aku tidak akan membiarkan warisan kakek hilang begitu saja!"
-    
+    hide ara_adult determined
+
+    show sari concerned at left
     s "Tapi nak, kamu kan sudah lama di kota..."
     s "Bertani kopi itu tidak mudah, apalagi kamu mulai dari nol..."
-    
+    hide sari concerned
+    show ara_adult at right
     a "Aku tahu Bu. Tapi aku harus coba."
     a "Dulu kakek pernah bilang, 'Butuh kesabaran, ketekunan, dan ilmu yang mendalam.'"
     a "Nah, sekarang saatnya aku belajar ilmu itu!"
@@ -243,63 +336,115 @@ label meet_mentor:
     $ day = 1
     scene bg village_center
     with fade
-    
+
     show sari at left
-    show ara_adult at center
-    
-    s "Ara, Ibu mau kenalkan kamu dengan Pak Mahmud."
-    s "Beliau petani kopi terbaik di desa ini, dan sahabat baik kakek kamu."
-    
+    show ara_adult
     show mahmud at right
-    with easeinright
-    
-    m "Halo. Jadi ini Ara, cucu Ibrahim yang sering diceritakan?"
-    
-    show ara_adult respectful
+    with easeinleft
+
+    # Sari speaks
+    show sari:
+        zoom 1.1
+    show ara_adult:
+        zoom 1.0
+    show mahmud:
+        zoom 1.0
+
+    s "Ara, Ibu mau kenalkan kamu dengan Pak Mahmud."
+    s "Beliau petani kopi terbaik di desa ini, dan adik dari sahabat baik kakek kamu."
+
+    # Mahmud speaks
+    show sari:
+        zoom 1.0
+    show mahmud:
+        zoom 1.1
+    show ara_adult:
+        zoom 1.0
+
+    m "Halo. Jadi ini Ara, cucu Pak Ibrahim yang sering diceritakan?"
+
+    # Ara speaks
+    show mahmud:
+        zoom 1.0
+    show ara_adult:
+        zoom 1.1
+
     a "Halo, Pak. Saya Ara."
     a "Mohon bimbingannya, Pak Mahmud."
-    
+
+    # Mahmud continues
+    show ara_adult:
+        zoom 1.0
+    show mahmud:
+        zoom 1.1
+
     m "Hmm... Sari sudah cerita, kamu mau menghidupkan kebun kakek?"
     m "Itu bagus. Tapi apa kamu yakin?"
     m "Bertani kopi bukan main-main, nak."
-    
+
     menu:
         "Saya yakin, Pak. Saya akan belajar dengan sungguh-sungguh.":
             $ knowledge += 10
             $ reputation += 5
+
             m "Bagus! Sikap seperti itu yang dibutuhkan."
             jump mentor_accepts
-            
+
         "Sejujurnya saya masih ragu, tapi saya harus coba.":
             $ knowledge += 5
+
             m "Kejujuran itu baik. Setidaknya kamu realistis."
             jump mentor_accepts
 
 label mentor_accepts:
+
+    # Mahmud speaking
+    show ara_adult:
+        zoom 1.0
+    show mahmud:
+        zoom 1.1
+
     m "Baiklah, Bapak akan bantu kamu."
     m "Tapi ingat, Bapak hanya bisa bimbing. Yang kerja tetap kamu."
     m "Kamu siap?"
-    
-    show ara_adult determined
+
+    # Ara responds
+    show mahmud:
+        zoom 1.0
+    show ara_adult determined:
+        zoom 1.1
+
     a "Siap, Pak!"
-    
+
+    # Mahmud continues
+    show ara_adult:
+        zoom 1.0
+    show mahmud:
+        zoom 1.1
+
     m "Oke. Mulai besok, kamu ikut Bapak ke kebun."
     m "Kita mulai dari dasar: mengenal tanah, bibit, dan peralatan."
     m "Jam 6 pagi, kamu sudah harus di rumah Bapak."
-    
+
+    stop music fadeout 2.0
+    # Ara responds
+    show mahmud:
+        zoom 1.0
+    show ara_adult:
+        zoom 1.1
+
     a "Baik, Pak! Terima kasih!"
     
     # Tutorial preparation
     scene bg ara_room_night
     with fade
-    play music "audio/night_ambience.ogg"
+    play music "audio/city.mp3"
     
-    show ara_adult thinking
     n "Malam itu, Ara menyiapkan diri untuk hari pertamanya belajar bertani."
-    
+    show ara_adult determined
     a "Oke Ara, besok hari pertama."
     a "Kamu pasti bisa! Demi kakek, demi warisan keluarga!"
-
+    stop music
 # =============================================================================
 # TUTORIAL STATE - FIRST DAY LEARNING
 # =============================================================================
@@ -310,14 +455,16 @@ label first_day_learning:
     
     scene bg mahmud_house
     with fade
-    play music "audio/morning_birds.ogg"
+    play audio "audio/rooster.mp3"
+    n "Keesokan paginya."
+    play music "audio/village.mp3" fadeout 1.0 fadein 2.0 volume 0.5
     
-    show mahmud at center
+    show mahmud at left
     with easeinleft
     
     m "Pagi, Ara! Tepat waktu. Bagus!"
     
-    show ara_adult energetic at right
+    show ara_adult grateful at right
     with easeinright
     
     a "Selamat pagi, Pak Mahmud!"
@@ -329,62 +476,90 @@ label first_day_learning:
     scene bg coffee_plantation_good
     with dissolve
     
+    show mahmud
     m "Lihat kebun Bapak ini. Sudah 20 tahun Bapak rawat."
     m "Bandingkan dengan kebun kakek kamu yang terbengkalai."
     m "Apa yang kamu lihat?"
-    
-    show ara_adult observing
+    hide mahmud
+    show ara_adult
     a "Kebun Bapak lebih rapi, pohon kopinya sehat..."
     a "Tanah di sini juga terlihat lebih subur."
-    
+    hide ara_adult
+
+    show mahmud
     m "Benar! Sekarang coba ambil segenggam tanah ini."
 
-    m "Tanah untuk kopi Gayo harus:"
-    m "pH antara 6.0-6.5, drainase baik, kaya humus."
+    m "Tanah untuk kopi Gayo harus memiliki beberapa hal."
+    m "Yang pertama, pH antara 6.0-6.5, drainase baik, kaya humus."
     m "Ketinggian ideal 1.200-1.700 meter di atas permukaan laut."
     
     $ knowledge += 15
-    
-    show ara_adult excited
+    hide mahmud
+    show ara_adult surprised at right
+    show mahmud at left
+    with easeinright
+
+    show ara_adult surprised:
+        zoom 1.1
+    show mahmud:
+        zoom 1.0
+
     a "Wah, ternyata banyak sekali yang harus diperhatikan!"
-    
+
+    show ara_adult:
+        zoom 1.0
+    show mahmud:
+        zoom 1.1
+
     m "Ini baru permulaan, nak."
     m "Sekarang kita lihat berbagai varietas kopi Gayo."
-    
-    # Varietas introduction
+
+    show ara_adult:
+        zoom 1.0
+
     m "Ada beberapa varietas utama:"
     m "Gayo 1: Tahan penyakit, produktivitas tinggi."
     m "Gayo 2: Kualitas cup terbaik, aroma kuat."
     m "Bourbon: Tradisional, rasa kompleks."
     m "Catimor: Tahan hama, cocok untuk pemula."
-    
+
     menu:
         "Untuk pemula seperti saya, sebaiknya pilih varietas apa, Pak?":
+            show mahmud:
+                zoom 1.1
             m "Bagus, kamu bertanya yang tepat!"
             m "Untuk pemula, Bapak sarankan Catimor dan Gayo 1."
             m "Mudah dirawat dan tahan penyakit."
             $ knowledge += 10
-            
+
         "Saya mau langsung coba yang kualitas terbaik!":
+            show mahmud:
+                zoom 1.1
             m "Semangat yang bagus, tapi..."
             m "Gayo 2 membutuhkan keahlian tinggi."
             m "Sebaiknya kamu mulai dari yang mudah dulu."
             $ knowledge += 5
-    
-    # Tools introduction
+
+    show mahmud:
+        zoom 1.1
+    show ara_adult:
+        zoom 1.0
+
     m "Sekarang kita lihat peralatan yang dibutuhkan."
-    
     m "Hari ini cukup sampai di sini."
     m "Besok kita praktik langsung di kebun kakek kamu."
     m "Istirahat yang cukup, karena besok akan lebih berat."
-    
+    stop music fadeout 2.0
     $ energy -= 30
-    
-    show ara_adult tired but happy
+
+    show mahmud:
+        zoom 1.0
+    show ara_adult:
+        zoom 1.1
+
     a "Baik, Pak! Terima kasih untuk pelajaran hari ini."
     a "Banyak sekali yang saya pelajari!"
-    
-    # Evening reflection
+    play music "audio/city.mp3"
     scene bg ara_room_night
     with fade
     
@@ -393,7 +568,7 @@ label first_day_learning:
     
     a "Wah, ternyata bertani kopi tidak sesederhana yang kukira."
     a "Tapi ini menarik! Aku mulai paham kenapa kakek sangat mencintai pekerjaannya."
-
+    stop music
 # =============================================================================
 # FARMING CYCLE STATE - LAND PREPARATION
 # =============================================================================
@@ -404,7 +579,7 @@ label land_preparation:
     
     scene bg coffee_plantation_abandoned
     with fade
-    play music "audio/working_music.ogg"
+    play music "audio/village.mp3" fadeout 1.0 fadein 2.0 volume 0.5
     
     show mahmud at left
     show ara_adult at right
@@ -429,11 +604,13 @@ label land_preparation:
     show ara_adult tired
     a "Hah... hah... capek juga ya, Pak."
     a "Baru sebagian kecil, tapi sudah mulai keliatan bedanya."
-    
+    hide ara_adult tired
+
+    show mahmud
     m "Haha, kamu sudah bagus untuk hari pertama."
     m "Ingat, bertani itu butuh fisik yang kuat."
     m "Makanya petani bangun subuh dan tidur lebih awal."
-    
+
     # Soil testing sequence
     m "Sekarang kita tes tanah di beberapa titik."
     m "Ini penting untuk tahu kondisi pH dan nutrisi."
@@ -441,13 +618,19 @@ label land_preparation:
     m "Hmm... pH-nya 5.5. Agak asam."
     m "Perlu diberi kapur dolomit untuk menetralkan."
     m "Kandungan nitrogen juga kurang."
-    
+    hide mahmud
+    show ara_adult
     a "Berarti perlu pupuk ya, Pak?"
-    
+    hide ara_adult
+
+    show mahmud
     m "Iya, tapi tidak sembarangan."
     m "Pupuk organik lebih baik untuk jangka panjang."
     m "Kompos, pupuk kandang, atau pupuk dari kulit kopi."
-    
+    hide mahmud
+    show ara_adult at right
+    show mahmud at left
+    with easeinright
     # Resource management decision
     menu:
         "Beli pupuk kimia (cepat tapi mahal - 50.000)":
@@ -488,20 +671,59 @@ label land_preparation:
     show villager1 at left
     show ara_adult at center
     show villager2 at right
-    
+    with easeinright
+
+    # Villager 1 speaks
+    show villager1:
+        zoom 1.1
+    show ara_adult:
+        zoom 1.0
+    show villager2:
+        zoom 1.0
+
     "Warga 1" "Ara, dengar-dengar kamu mau hidupin kebun kakek?"
-    
+
+    # Ara speaks
+    show villager1:
+        zoom 1.0
+    show ara_adult:
+        zoom 1.1
+    show villager2:
+        zoom 1.0
+
     a "Iya, Pak. Saya sedang belajar dengan Pak Mahmud."
-    
+
+    # Villager 2 speaks
+    show villager1:
+        zoom 1.0
+    show ara_adult:
+        zoom 1.0
+    show villager2:
+        zoom 1.1
+
     "Warga 2" "Wah, bagus tuh! Desa kita butuh petani muda seperti kamu."
     "Warga 2" "Kebanyakan anak muda sekarang pada ke kota."
-    
+
+    # Villager 1 speaks again
+    show villager1:
+        zoom 1.1
+    show ara_adult:
+        zoom 1.0
+    show villager2:
+        zoom 1.0
+
     "Warga 1" "Betul! Kalau ada yang perlu dibantu, bilang aja ya."
     "Warga 1" "Kita kan tetangga, harus saling bantu."
+
     
     $ reputation += 10
     
-    show ara_adult grateful
+    show villager1:
+        zoom 1.0
+    show ara_adult grateful:
+        zoom 1.1
+    show villager2:
+        zoom 1.0
     a "Terima kasih, Bapak-bapak!"
     a "Saya sangat terbantu dengan dukungan kalian."
 
@@ -517,7 +739,7 @@ label planting_phase:
     with fade
     
     show mahmud at left
-    show ara_adult at center
+    # show ara_adult at center
     
     m "Hari ini kita mulai dengan bibit."
     m "Bibit yang baik adalah kunci sukses bertani kopi."
@@ -531,7 +753,8 @@ label planting_phase:
     # Transplanting sequence
     scene bg coffee_plantation_prepared
     with dissolve
-    
+    show mahmud at left
+    with easeinleft
     m "Sekarang kita pindahkan bibit ke kebun."
     m "Jarak tanam yang ideal adalah 2.5 x 2.5 meter."
     m "Kenapa harus segitu?"
@@ -555,66 +778,90 @@ label planting_phase:
     $ money -= 25000  # Cost of seedlings
     
     # Weather concern
-    play sound "audio/thunder.ogg"
-    
-    show ara_adult worried
+    play sound "audio/thunder.mp3"
+    hide mahmud
+
+    show ara_adult worried at right
+    with easeinright
     a "Pak, kok langit mendung ya? Jangan-jangan hujan?"
-    
+    hide ara_adult worried
+
+    show mahmud at left
     m "Iya, sepertinya memang akan hujan."
     m "Tapi ini bagus! Bibit yang baru ditanam butuh air."
     m "Hujan alami lebih baik daripada siram manual."
-    
+    hide mahmud
     # Rain sequence
     scene bg coffee_plantation_rain
     with fade
-    play sound "audio/rain.ogg" loop
+    play sound "audio/rain.mp3"
     
     n "Hujan turun dengan deras..."
-    
-    show ara_adult happy
+    show ara_adult 
     a "Alhamdulillah... semoga bibit-bibit kita tumbuh dengan baik."
-    
+    stop music fadeout 2.0
     # One week later - growth check
     $ day += 7
     $ energy = 100
     
     scene bg coffee_plantation_growing
     with fade
-    stop sound
-    play music "audio/morning_birds.ogg"
+    play sound "rooster.mp3"
     
     show mahmud at left
-    show ara_adult excited at right
-    
+    show ara_adult grateful at right
+
+    show ara_adult grateful:
+        zoom 1.1
+    show mahmud:
+        zoom 1.0
+
     a "Pak Mahmud! Lihat! Bibit-bibit kita mulai tumbuh!"
     a "Ada tunas-tunas baru yang keluar!"
-    
+    play music "audio/village.mp3" fadeout 1.0 fadein 2.0 volume 0.5
+    show ara_adult:
+        zoom 1.0
+    show mahmud:
+        zoom 1.1
+
     m "Haha, kamu lebih excited daripada anakku dulu."
     m "Iya, mereka tumbuh dengan baik."
     m "Tapi ini baru permulaan. Pohon kopi baru berbuah setelah 3-4 tahun."
-    
-    show ara_adult surprised
+
+    show mahmud:
+        zoom 1.0
+    show ara_adult surprised:
+        zoom 1.1
+
     a "Lama sekali ya, Pak?"
-    
+
+    show ara_adult:
+        zoom 1.0
+    show mahmud:
+        zoom 1.1
+
     m "Makanya bertani kopi butuh kesabaran."
     m "Tapi tenang, sementara menunggu, kita bisa tanam tanaman sela."
     m "Jagung, kacang tanah, atau sayuran."
     m "Biar ada penghasilan sambil menunggu kopi berbuah."
-    
-    # Intercropping decision
+
     menu:
         "Mau tanam jagung (penghasilan 3 bulan, untung sedang)":
             $ money += 30000
             $ knowledge += 10
             call maintenance_phase
-            
+
         "Mau tanam sayuran (penghasilan 1 bulan, untung kecil tapi cepat)":
-            $ money += 15000  
+            $ money += 15000
             $ knowledge += 5
             call maintenance_phase
-            
+
         "Fokus ke kopi saja (tidak ada penghasilan tambahan)":
             $ knowledge += 20
+            show mahmud:
+                zoom 1.1
+            show ara_adult:
+                zoom 1.0
             m "Pilihan yang fokus. Tapi pastikan kamu punya cukup uang untuk hidup."
             call maintenance_phase
 
@@ -630,7 +877,7 @@ label maintenance_phase:
     with fade
     
     show mahmud at left
-    show ara_adult at center
+    # show ara_adult at right
     
     m "Sudah sebulan sejak kita tanam."
     m "Sekarang masuk fase perawatan intensif."
@@ -653,8 +900,8 @@ label maintenance_phase:
     show ara_adult worried
     a "Pak Mahmud! Ada yang aneh dengan beberapa pohon kopi saya!"
     a "Daunnya menguning dan ada bercak-bercak coklat!"
-    
-    show mahmud concerned at right
+    hide ara_adult worried
+    show mahmud concerned
     with easeinright
     
     m "Hmm... ini terlihat seperti penyakit karat daun."
@@ -727,7 +974,7 @@ label maintenance_continue:
     with fade
     
     show mahmud at left
-    show ara_adult at center
+    # show ara_adult at right
     
     m "Sudah 2 bulan sejak penanaman."
     m "Sekarang saatnya pemupukan yang lebih intensif."
@@ -755,17 +1002,18 @@ label maintenance_continue:
     
     scene bg coffee_plantation_pest
     with fade
-    play sound "audio/insects.ogg"
+    play sound "audio/insect.mp3"
     
-    show ara_adult alarmed
+    show ara_adult shocked at right
     a "Pak Mahmud! Ada serangan hama!"
     a "Banyak sekali serangga kecil di daun-daun kopi!"
-    
-    show mahmud examining at right
+    hide ara_adult shocked
+    stop sound
+    show mahmud examining at left
     m "Hmm... ini kutu daun hijau."
     m "Hama yang cukup umum menyerang kopi muda."
     m "Untung kamu cepat mendeteksi."
-    
+    show mahmud at left
     m "Untuk kutu daun, ada beberapa cara pengendalian:"
     m "Biologis: lepas predator alami seperti kepik."
     m "Mekanis: semprot air atau bersihkan manual."
@@ -792,8 +1040,10 @@ label biological_control:
     m "Pilihan yang sangat baik!"
     m "Kepik dan predator alami akan jaga keseimbangan ekosistem."
     m "Ini investasi jangka panjang untuk kebun yang sehat."
-    
+    hide mahmud
     $ day += 10
+    scene bg coffee_plantation_month2
+    with fade
     n "Sepuluh hari kemudian, populasi kutu daun berkurang drastis."
     n "Kepik-kepik bekerja dengan efektif."
     jump maintenance_success
@@ -801,8 +1051,10 @@ label biological_control:
 label mechanical_control:
     m "Cara yang paling aman untuk lingkungan."
     m "Tapi memang butuh tenaga ekstra dan harus rajin."
-    
+    hide mahmud
     $ day += 7
+    scene bg coffee_plantation_month2
+    with fade
     n "Dengan penyemprotan rutin, kutu daun terkendali."
     n "Meski capek, tapi hasilnya memuaskan."
     jump maintenance_success
@@ -811,35 +1063,37 @@ label organic_spray:
     m "Spray organik juga efektif."
     m "Kita pakai sabun cuci piring yang ramah lingkungan."
     m "Campur dengan minyak goreng sedikit."
-    
+    hide mahmud
     $ day += 5
+    scene bg coffee_plantation_month2
+    with fade
     n "Lima hari kemudian, kutu daun mulai berkurang."
     n "Cara yang ekonomis dan cukup efektif."
 
 label maintenance_success:
+    stop music
     # Growth milestone
     $ day += 60
     $ coffee_plants += 10  # Some plants recovered/grew well
     
     scene bg coffee_plantation_healthy
     with fade
-    play music "audio/success_theme.ogg"
-    
-    show ara_adult proud at center
     
     n "4 bulan sejak penanaman..."
     n "Kebun kopi Ara sudah mulai menampakkan hasil yang menggembirakan."
-    
+
+    play music "audio/traditional.mp3" fadeout 1.0 fadein 2.0 volume 0.5
+    show ara_adult at center
     a "Alhamdulillah... Pohon-pohon kopi sudah tumbuh tinggi dan sehat!"
     a "Daun-daunnya hijau segar, batangnya kokoh."
-    
-    show mahmud proud at right
+    hide ara_adult
+    show mahmud proud
     with easeinright
     
     m "Wahh... Kamu sudah berhasil, Ara!"
     m "Kebun ini sudah jauh berbeda dari 4 bulan lalu."
     m "Kakek Ibrahim pasti bangga melihat cucunya."
-    
+    hide mahmud
     $ reputation += 25
     $ knowledge += 30
     
@@ -851,13 +1105,14 @@ label maintenance_success:
     "Warga 1" "Ara! Dengar-dengar kebun kamu sudah bagus?"
     "Warga 1" "Boleh kami lihat-lihat?"
     
-    show ara_adult humble
+    show ara_adult at right
+    with easeinright
     a "Silakan, Pak. Masih belajar kok."
-    
+    hide ara_adult
     "Warga 1" "Wah, ini mah sudah bagus banget!"
     "Warga 1" "Anak muda jaman sekarang jarang yang mau bertani."
     "Warga 1" "Kamu jadi inspirasi buat yang lain!"
-    
+    stop music fadeout 2.0
     $ reputation += 15
 
 # =============================================================================
@@ -868,25 +1123,25 @@ label first_flowering:
     $ day += 365  # 1 year after planting
     
     scene bg coffee_plantation_flowering
-    with fade
-    play music "audio/gentle_wind.ogg"
-    
-    show ara_adult amazed at center
+    with fade 
     
     n "Setahun kemudian..."
     n "Keajaiban pertama terjadi di kebun Ara."
-    
+
+    play music "audio/village.mp3" fadeout 1.0 fadein 2.0 volume 0.5
+    show ara_adult grateful at center
     a "Wahhh... bunga-bunga putih kecil bermunculan!"
     a "Wanginya harum sekali... seperti melati!"
-    
-    show mahmud excited at right
-    with easeinright
+    hide ara_adult grateful
+    show mahmud excited
     
     m "Alhamdulillah! Pohon kopi kamu mulai berbunga!"
     m "Ini pertanda bahwa akar dan batangnya sudah kuat."
     m "Sebentar lagi akan ada buah kopi pertama!"
-    
+    hide mahmud excited
     # Flowering education
+
+    show mahmud at left with easeinleft
     m "Bunga kopi itu unik, Ara."
     m "Mereka bisa menyerbuki sendiri, tidak butuh bantuan serangga."
     m "Tapi tetap lebih baik kalau ada lebah untuk membantu."
@@ -918,14 +1173,14 @@ label beekeeping_start:
     m "Bagus! Lebah Trigona cocok untuk daerah sini."
     m "Mereka tidak menyengat dan mudah dirawat."
     m "Plus madunya punya kualitas premium."
-    
+    hide mahmud
     n "Beberapa minggu kemudian..."
     n "Suara lebah mulai ramai di kebun Ara."
     n "Bunga-bunga kopi lebih sering dikunjungi lebah."
     
     $ money += 20000  # Monthly honey income
     
-    show ara_adult happy
+    show ara_adult grateful
     a "Wah, ternyata lebah benar-benar membantu ya!"
     a "Dan madunya enak sekali!"
 
@@ -936,11 +1191,11 @@ label flowering_continue:
     scene bg coffee_plantation_young_fruits
     with fade
     
-    show ara_adult excited
+    show ara_adult at right
     a "Pak Mahmud! Lihat! Bunga-bunga sudah berubah jadi buah kecil!"
     a "Hijau kecil-kecil, lucu sekali!"
-    
-    show mahmud at right
+    hide ara_adult
+    show mahmud at left
     m "Iya, ini yang disebut 'pin head stage'."
     m "Buah kopi masih kecil seperti kepala peniti."
     m "Dari sini butuh 6-8 bulan lagi sampai matang."
@@ -950,7 +1205,7 @@ label flowering_continue:
     m "Air yang cukup tapi tidak berlebihan."
     m "Nutrisi yang seimbang."  
     m "Perlindungan dari hama burung dan tupai."
-    
+    hide mahmud
     $ money -= 25000  # Investment in bird nets
     $ knowledge += 20
     
@@ -959,17 +1214,19 @@ label flowering_continue:
     
     scene bg coffee_plantation_dry_season
     with fade
-    play sound "audio/strong_wind.ogg"
+    play sound "audio/wind.mp3"
     
-    show ara_adult worried
+    show ara_adult worried at right
     a "Pak, kemarau tahun ini lebih panjang dari biasanya."
     a "Daun-daun mulai layu, buah-buah kecil banyak yang gugur."
-    
-    show mahmud concerned at right
+    hide ara_adult worried
+
+    show mahmud concerned at left
     m "Iya, ini tantangan serius."
     m "Kalau tidak ditangani, bisa gagal panen total."
     m "Kita perlu sistem irigasi darurat."
-    
+    stop sound
+    hide mahmud concerned
     # Drought management decision
     menu:
         "Pasang sistem irigasi tetes (mahal tapi efisien - 200.000)":
@@ -992,11 +1249,14 @@ label flowering_continue:
             call prayer_for_rain
 
 label drip_irrigation_system:
+    show mahmud at left
     m "Keputusan yang bijak untuk investasi jangka panjang!"
     m "Sistem tetes menghemat air 60 persen dibanding siram manual."
     m "Dan airnya tepat ke akar, tidak ada yang terbuang."
-    
+    hide mahmud
     $ day += 14
+    scene bg coffee_plantation_after_dry_season
+    with fade
     n "Dua minggu kemudian, sistem irigasi mulai beroperasi."
     n "Pohon-pohon kopi terlihat segar kembali."
     n "Buah-buah yang sempat stress mulai pulih."
@@ -1005,11 +1265,14 @@ label drip_irrigation_system:
     jump first_harvest_prep
 
 label manual_watering_sequence:
+    show mahmud at left
     m "Tidak apa-apa. Yang penting konsisten."
     m "Siram pagi dan sore, jangan siang hari."
     m "Air yang panas bisa merusak akar."
-    
+    hide mahmud
     $ day += 30
+    scene bg coffee_plantation_after_dry_season
+    with fade
     n "Sebulan dengan penyiraman manual yang rajin..."
     n "Meski capek, tapi hasilnya lumayan baik."
     n "Sebagian besar tanaman berhasil bertahan."
@@ -1017,11 +1280,15 @@ label manual_watering_sequence:
     jump first_harvest_prep
 
 label prayer_for_rain:
+    show mahmud at left
     m "Doa memang penting, tapi ikhtiar juga harus maksimal."
     m "Yuk kita coba usaha yang bisa kita lakukan."
-    
+    hide mahmud
+
     # Random weather event
     if renpy.random.randint(1, 10) > 7:
+        scene bg coffee_plantation_after_dry_season
+        with fade
         n "Wahh! Hujan turun setelah seminggu!"
         n "Sepertinya doa dan ikhtiar dikabulkan!"
         $ reputation += 10
@@ -1031,8 +1298,10 @@ label prayer_for_rain:
         n "Banyak buah muda yang gugur karena stress air."
         $ coffee_plants -= 15
         $ money -= 30000  # Loss from failed fruits
+        show mahmud at left
         m "Ini pelajaran penting tentang manajemen risiko."
         jump first_harvest_prep
+        hide mahmud
 
 # =============================================================================
 # FARMING CYCLE STATE - FIRST HARVEST
@@ -1040,21 +1309,19 @@ label prayer_for_rain:
 
 label first_harvest_prep:
     $ day += 120  # 4 months later
-    
+    stop music fadeout 2.0
     scene bg coffee_plantation_ripe_fruits  
     with fade
-    play music "audio/harvest_celebration.ogg"
-    
-    show ara_adult amazed at center
     
     n "Akhirnya... setelah 2 tahun menunggu..."
     n "Buah kopi pertama di kebun Ara mulai matang!"
-    
+    play music "audio/harvest.mp3" loop fadein 2.0 volume 0.5
+    show ara_adult grateful at center
     a "Wahh! Buah-buahnya sudah merah seperti ceri!"
     a "Cantik sekali! Ini hasil kerja keras selama 2 tahun!"
-    
-    show mahmud proud at right
-    with easeinright
+    hide ara_adult grateful
+
+    show mahmud proud 
     
     m "Alhamdulillah, Ara! Kamu berhasil!"
     m "Panen pertama adalah momen yang sangat spesial."
@@ -1076,7 +1343,7 @@ label first_harvest_prep:
     $ harvested_beans += 50
     $ energy -= 40
     $ money += 75000  # Income from first harvest
-    
+    hide mahmud
     show ara_adult emotional
     a "Pak... saya hampir menangis..."
     a "Ini buah kopi pertama yang saya panen sendiri!"
@@ -1095,17 +1362,23 @@ label post_harvest_processing:
     with fade
     
     show mahmud at left
-    show ara_adult at center
-    
+    show ara_adult at right
+
+    show ara_adult:
+        zoom 1.0
+    show mahmud:
+        zoom 1.1
+
     m "Sekarang masuk tahap yang menentukan kualitas akhir."
     m "Post harvest processing atau pengolahan pasca panen."
     m "Di sini kita tentukan profil rasa kopi kita."
-    
-    # Processing method education
+
+    # Continued Mahmud explanation
     m "Ada 3 metode utama pengolahan kopi:"
     m "Natural/kering: buah dikeringkan langsung."
     m "Washed/basah: kulit buah dikupas, difermentasi, dicuci."
     m "Honey/semi-washed: kombinasi keduanya."
+
     
     menu:
         "Coba metode natural (mudah, rasa fruity)":
@@ -1160,16 +1433,17 @@ label processing_complete:
     scene bg drying_beds
     with fade
     
-    show ara_adult satisfied
+    show ara_adult grateful
     a "Akhirnya selesai juga proses pengeringan!"
     a "Warna biji kopinya bagus, aroma sudah keluar!"
+    hide ara_adult
     
-    show mahmud examining at right
+    show mahmud examining
     m "Bagus! Kadar airnya sudah pas, sekitar 12 persen."
     m "Sekarang kita sortir berdasarkan ukuran dan kualitas."
     
     $ knowledge += 20
-    
+    show mahmud
     # Quality grading
     m "Berdasarkan sortir tadi, kopi kamu bisa dikategorikan:"
     m "Grade 1: 60 persen - kualitas premium"
@@ -1177,8 +1451,8 @@ label processing_complete:
     m "Grade 3: 10 persen - kualitas rendah"
     
     $ money += 50000  # Additional income from quality grading
-    
-    show ara_adult proud
+    hide mahmud
+    show ara_adult grateful
     a "Alhamdulillah! Mayoritas grade 1!"
     a "Kerja keras selama ini tidak sia-sia!"
 
@@ -1189,37 +1463,39 @@ label processing_complete:
 label first_marketing:
     scene bg village_market
     with fade
-    play music "audio/market_ambience.ogg"
-    
-    show ara_adult nervous at center
+    stop music fadeout 2.0
     
     n "Saatnya Ara menjual hasil panen pertamanya..."
     n "Ini akan menentukan keberlanjutan usaha kebunnya."
     
+    play music "audio/market.mp3"
+    show ara_adult worried at right
     a "Deg-degan juga ya... mau jual kopi pertama kali."
     a "Semoga harganya bagus..."
-    
+    hide ara_adult
     # Meet coffee buyer
-    show buyer at right
-    with easeinright
+    show buyer at left
     
     "Pembeli" "Permisi, saya dengar ada petani baru yang punya kopi bagus?"
-    
-    show ara_adult respectful
-    a "Iya Pak, saya Ara. Ini kopi Gayo hasil kebun sendiri."
-    
+    hide buyer
+    show ara_adult at right
+    a "Iya Bu, saya Ara. Ini kopi Gayo hasil kebun sendiri."
+    hide ara_adult
+    show buyer at left
     "Pembeli" "Boleh saya cicipi dulu?"
     
     "Pembeli" "Hmm... aromanya bagus, rasanya balance."
     "Pembeli" "Untuk petani pemula, ini sudah bagus sekali."
     "Pembeli" "Saya bisa beli dengan harga 45.000 per kilo."
-    
+    hide buyer
     # Price negotiation
     menu:
         "Terima harga tersebut (aman, langsung dapat uang)":
             $ money += 135000  # 3kg x 45.000
             $ knowledge += 10
-            a "Baik Pak, saya setuju."
+            show ara_adult at right
+            a "Baik Bu, saya setuju."
+            hide ara_adult
             jump first_sale_complete
             
         "Coba tawar lebih tinggi (berisiko tapi bisa untung lebih)":
@@ -1231,29 +1507,40 @@ label first_marketing:
             jump find_other_buyer
 
 label price_negotiation_game:
-    a "Pak, boleh tidak harganya 50.000 per kilo?"
+    hide buyer
+    show ara_adult at right
+    a "Bu, boleh tidak harganya 50.000 per kilo?"
     a "Kopi saya grade 1, kualitas premium."
-    
+    hide ara_adult
+    show buyer at left
     "Pembeli" "Hmm... untuk pemula memang berani ya."
     "Pembeli" "Tapi kualitasnya memang bagus..."
-    
+    hide buyer
     # Negotiation success based on reputation and knowledge
     if reputation >= 30 and knowledge >= 80:
+        show buyer at left
         "Pembeli" "Oke, 48.000 per kilo. Final."
+        hide buyer
         $ money += 144000  # 3kg x 48.000
         $ reputation += 5
-        a "Terima kasih Pak!"
+        show ara_adult at right
+        a "Terima kasih Bu!"
+        hide ara_adult
         jump first_sale_complete
     else:
+        show buyer at left
         "Pembeli" "Maaf, 45.000 sudah pas untuk pemula."
         "Pembeli" "Kalau tidak mau, silakan cari pembeli lain."
+        hide buyer
         jump tough_decision
 
 label tough_decision:
     menu:
         "Terima tawaran 45.000 (pragmatis)":
             $ money += 135000
-            a "Baik Pak, saya terima."
+            show ara_adult at right
+            a "Baik Bu, saya terima."
+            hide ara_adult
             jump first_sale_complete
             
         "Cari pembeli lain (berisiko)":
@@ -1268,23 +1555,29 @@ label find_other_buyer:
         n "Beruntung! Ara menemukan pembeli yang mau bayar 47.000."
         $ money += 141000
         $ reputation += 10
+        show ara_adult at right
         a "Alhamdulillah, keputusan yang tepat!"
+        hide ara_adult
     else:
         n "Sayangnya, tidak ada pembeli lain yang mau bayar lebih tinggi."
         n "Ara akhirnya kembali ke pembeli pertama..."
+        show buyer at left
         "Pembeli" "Harga sekarang 42.000 saja. Take it or leave it."
+        hide buyer
         $ money += 126000
+        show ara_adult at right
         a "Huft... lesson learned."
+        hide ara_adult
 
 label first_sale_complete:
-    show ara_adult happy
+    show ara_adult
     a "Alhamdulillah! Penjualan pertama berhasil!"
     a "Dengan uang ini, bisa buat modal panen berikutnya!"
-    
+    stop music fadeout 2.0
     # Community celebration
     scene bg community_hall
     with fade
-    play music "audio/celebration.ogg"
+    play music "audio/village.mp3" fadein 2.0 volume 0.5
     
     show villager1 at left
     show ara_adult at center  
@@ -1292,7 +1585,7 @@ label first_sale_complete:
     
     "Warga 1" "Ara! Dengar-dengar panen pertama kamu berhasil?"
     
-    show ara_adult humble
+    show ara_adult
     a "Iya Pak, Alhamdulillah. Masih belajar terus kok."
     
     "Warga 2" "Kamu jadi inspirasi buat anak-anak muda lain!"
@@ -1309,52 +1602,48 @@ label first_sale_complete:
 
 label harvest_festival:
     $ day += 30
-    
     scene bg festival_preparation
     with fade
-    play music "audio/traditional_gayo.ogg"
     
     show kepala_desa at left
-    show ara_adult at center
     
     d "Ara, sebagai petani muda yang berhasil panen pertama,"
     d "kami ingin mengundang kamu jadi tamu kehormatan di Festival Panen."
-    
-    show ara_adult surprised
+    hide kepala_desa
+    show ara_adult surprised at right
     a "Wah, saya tersanjung Pak Kepala Desa!"
     a "Tapi saya masih pemula..."
-    
+    hide ara_adult
+    show kepala_desa at left
     d "Justru itu! Kamu bukti bahwa anak muda bisa sukses bertani."
     d "Sharing pengalaman kamu bisa motivasi yang lain."
-    
+    hide kepala_desa
     # Festival preparation
     scene bg festival_day
     with fade
-    play music "audio/festival_music.ogg"
     
     n "Hari Festival Panen Kopi Gayo..."
     n "Seluruh desa berkumpul merayakan hasil panen tahun ini."
     
-    show ara_adult nervous at center
+    show ara_adult at right
     a "Grogi juga ya... harus ngomong di depan banyak orang."
-    
-    show mahmud encouraging at right
+    hide ara_adult
+    show mahmud at left
     m "Tenang saja. Cerita apa adanya."
     m "Tentang perjuangan kamu dari nol sampai panen pertama."
-    
+    hide mahmud
     # Ara's speech
-    show ara_adult confident
+    show ara_adult at center
     a "Assalamu'alaikum, Bapak-Ibu sekalian..."
     a "Dua tahun lalu, saya cuma anak kota yang tidak tahu apa-apa soal bertani."
     a "Tapi berkat bimbingan Pak Mahmud dan dukungan masyarakat..."
     a "Alhamdulillah saya berhasil panen pertama kopi Gayo!"
     
     # Crowd reaction
-    play sound "audio/applause.ogg"
+    play sound "audio/applause.mp3"
     
-    show crowd_happy at left
     "Crowd" "Alhamdulillah! Hebat!"
-    
+    stop sound
     a "Yang ingin saya sampaikan:"
     a "Bertani kopi itu tidak mudah, tapi sangat memuaskan."
     a "Kita menjaga warisan nenek moyang dan alam sekitar."
@@ -1368,22 +1657,22 @@ label harvest_festival:
     with fade
     
     show elder at left
-    show ara_adult at center
     
     "Tetua Adat" "Sekarang kita lakukan upacara adat kopi Gayo."
     "Tetua Adat" "Ini tradisi turun temurun untuk menghormati hasil panen."
     
     "Tetua Adat" "Ara, kamu sudah resmi menjadi bagian petani kopi Gayo."
     "Tetua Adat" "Semoga berkah dan sukses selalu menyertai."
-    
+    hide elder
     $ reputation += 25
     
     # Festival end
-    show ara_adult grateful
+    show ara_adult grateful at right
     a "Terima kasih semuanya!"
     a "Ini momen yang tidak akan pernah saya lupakan!"
     a "Saya berjanji akan terus belajar dan berkontribusi untuk desa!"
-
+    hide ara_adult
+    stop music fadeout 2.0
 # =============================================================================
 # BUSINESS EXPANSION STATE - SCALING UP
 # =============================================================================
@@ -1394,21 +1683,22 @@ label business_expansion:
     scene bg coffee_plantation_expanded
     with fade
     
-    show ara_adult planning at center
-    
     n "Tiga bulan setelah panen pertama..."
     n "Ara mulai merencanakan ekspansi bisnis kopi."
-    
+
+    play music "audio/traditional.mp3" fadein 2.0
+    show ara_adult thinking at right
+    with easeinright
     a "Dengan keuntungan dari panen pertama..."
     a "Aku bisa mulai kembangkan usaha ini lebih besar."
-    
-    show mahmud advisor at right
-    with easeinright
+    hide ara_adult
+    show mahmud advisor at left
+    with easeinleft
     
     m "Bagus! Sekarang kamu sudah siap ke level berikutnya."
     m "Ada beberapa pilihan untuk ekspansi:"
     m "Perluas kebun, buat koperasi, atau olah sendiri sampai siap minum."
-    
+    hide mahmud
     # Expansion options
     menu:
         "Perluas kebun (investasi besar, produksi naik)":
@@ -1429,15 +1719,15 @@ label land_expansion:
     $ knowledge += 25
     
     scene bg coffee_plantation_expanded
-    show mahmud advisor at right
-    show ara_adult determined at center
+    show mahmud advisor at left
     
     m "Pilihan yang bagus! Dengan menambah lahan, produksi kita bisa meningkat drastis."
     m "Tapi ingat, tanaman kopi butuh 3-4 tahun untuk berbuah optimal."
-    
+    hide mahmud
+    show ara_adult at right
     a "Aku sudah siap berinvestasi jangka panjang, Pak Mahmud."
     a "Kakek dulu juga bilang, kesabaran adalah kunci sukses petani kopi."
-    
+    hide ara_adult
     $ reputation += 15
     $ energy -= 30
     
@@ -1451,15 +1741,17 @@ label join_cooperative:
     $ reputation += 25
     
     scene bg village_hall
-    show kepala_desa friendly at left
-    show ara_adult confident at center
-    show farmers_group at right
+    show kepala_desa at left
+    with easeinleft
     
     d "Selamat datang di Koperasi Kopi Gayo Bersatu, Ara!"
     d "Dengan bergabung bersama kami, akses pasar akan lebih mudah."
-    
+    hide kepala_desa
+
+    show ara_adult at right
+    with easeinright
     a "Terima kasih, Pak Kepala Desa. Aku yakin ini keputusan yang tepat."
-    
+    hide ara_adult
     # Show cooperative benefits
     n "Keuntungan bergabung koperasi:"
     n "• Harga jual lebih stabil"
@@ -1477,7 +1769,7 @@ label coffee_shop_venture:
     $ reputation += 20
     
     scene bg coffee_shop_construction
-    show ara_adult excited at center
+    show ara_adult grateful at center
     
     a "Saatnya wujudkan mimpi! Coffee shop dengan kopi hasil kebun sendiri!"
     a "Dari biji sampai cangkir, semua under control!"
@@ -1485,12 +1777,13 @@ label coffee_shop_venture:
     scene bg coffee_shop_grand_opening
     with dissolve
     
-    show ara_adult proud at center
-    show customers_happy at right
+    show ara_adult at right
+    show buyer at left
     
     a "Selamat datang di 'Warisan Gayo Coffee'!"
     a "Setiap tegukan adalah hasil kerja keras petani lokal."
-    
+    hide buyer
+    hide ara_adult
     n "Coffee shop Ara menjadi hits! Wisatawan mulai berdatangan."
     
     $ money += 100000  # Daily revenue
@@ -1503,11 +1796,10 @@ label premium_quality_focus:
     $ reputation += 10
     
     scene bg coffee_processing_premium
-    show ara_adult focused at center
-    show quality_inspector at right
-    
+    show ara_adult at center  
     a "Aku akan fokus pada kualitas super premium."
     a "Target pasar kafe specialty dan eksport."
+    hide ara_adult
     
     n "Dengan fokus kualitas, harga jual kopi Ara naik 300 persen!"
     n "Tapi volume penjualan lebih sedikit karena pasar terbatas."
@@ -1522,18 +1814,18 @@ label premium_quality_focus:
 
 label cooperative_invitation:
     scene bg village_meeting
-    show kepala_desa serious at left
-    show ara_adult listening at center
+    show kepala_desa at left
     
     d "Ara, dengan ekspansi kebun mu, kami ingin mengundang kamu"
     d "untuk memimpin program sertifikasi organik desa."
-    
-    show ara_adult surprised
+    hide kepala_desa
+    show ara_adult at right
     a "Memimpin? Tapi aku masih belajar, Pak."
-    
+    hide ara_adult
+    show kepala_desa at left
     d "Justru karena itu! Kamu punya semangat baru dan pengetahuan modern."
     d "Kombinasi dengan tradisi kakek mu akan sempurna."
-    
+    hide kepala_desa
     menu:
         "Terima tantangan memimpin sertifikasi organik":
             $ reputation += 30
@@ -1546,8 +1838,7 @@ label cooperative_invitation:
 
 label organic_certification_leader:
     scene bg training_session
-    show ara_adult teaching at center
-    show farmers_learning at right
+    show ara_adult at center
     
     a "Baik, Bapak-Ibu sekalian. Sertifikasi organik bukan hanya soal label."
     a "Ini soal menjaga kelestarian tanah untuk anak cucu kita."
@@ -1561,9 +1852,9 @@ label organic_certification_leader:
     jump international_buyer
 
 label organic_certification:
-    scene bg certification_process
-    show ara_adult learning at center
-    show organic_inspector at right
+    scene bg coffee_plantation_ripe_fruits
+    show ara_adult at right
+    show elder at left
     
     n "Proses sertifikasi organik memakan waktu 6 bulan."
     n "Ara harus mengubah cara bertani tanpa pestisida kimia."
@@ -1574,44 +1865,46 @@ label organic_certification:
     $ knowledge += 25
     $ reputation += 20
     
-    jump quality_improvement
+    jump organic_certification_leader
 
 # =============================================================================
 # INTERNATIONAL RECOGNITION & MARKET ACCESS
 # =============================================================================
 
 label international_buyer:
+    stop music fadeout 2.0
     scene bg video_call_international
-    show ara_adult professional at center
-    show buyer_international at right
-    
+    show ara_adult professional at right
+    show buyer_international at left
+    # play audio "audio/phone_ringing.mp3"
+    play music "audio/city.mp3"
     "Buyer International" "Ms. Ara, we're very interested in Gayo coffee from your cooperative."
     "Buyer International" "The quality is exceptional, and the organic certification is perfect."
     
-    show ara_adult confident
     a "Thank you! Our coffee represents generations of traditional knowledge."
     a "Combined with modern sustainable practices."
     
     "Buyer International" "We'd like to place an order for 10 tons annually."
     "Buyer International" "Price: $12 per kilogram, FOB Medan port."
     
-    show ara_adult excited
+    show ara_adult professional emotional
     a "That's... that's amazing! Let me discuss with our cooperative."
     
     $ money += 500000
     $ reputation += 40
+    stop music fadeout 2.0
     
     jump sustainable_future
 
 label international_recognition:
     scene bg international_coffee_award
-    show ara_adult award_ceremony at center
-    show judges_panel at right
-    
+    show ara_adult professional at left:
+        xzoom -1.0
+    play music "audio/city.mp3"
     n "Kopi premium Ara meraih penghargaan di International Coffee Competition!"
     n "'Best Single Origin - Indonesia Category'"
     
-    show ara_adult emotional
+    show ara_adult professional emotional
     a "Kakek... aku berhasil membawa nama Gayo ke pentas dunia..."
     
     # Award ceremony sequence
@@ -1620,7 +1913,7 @@ label international_recognition:
     
     $ money += 1000000
     $ reputation += 100
-    
+    stop music fadeout 2.0
     jump sustainable_future
 
 # =============================================================================
@@ -1629,17 +1922,15 @@ label international_recognition:
 
 label tourism_development:
     scene bg agrowisata_development
-    show ara_adult visionary at center
-    show tourists_group at right
-    
+    show ara_adult at center
+    play music "audio/city.mp3"
     a "Dengan coffee shop yang sukses, sekarang saatnya kembangkan agrowisata!"
     a "Wisatawan bisa belajar langsung dari kebun sampai cangkir."
     
-    scene bg agrowisata_grand_opening
+    scene bg agrowisata_development
     with dissolve
     
-    show ara_adult guide at center
-    show tourists_amazed at right
+    show ara_adult determined at center
     
     a "Welcome to Gayo Highland Coffee Experience!"
     a "Here, you'll learn traditional coffee farming from our ancestors."
@@ -1649,7 +1940,6 @@ label tourism_development:
     
     $ money += 400000
     $ reputation += 60
-    
     jump community_empowerment
 
 # =============================================================================
@@ -1658,9 +1948,8 @@ label tourism_development:
 
 label community_empowerment:
     scene bg community_meeting
-    show ara_adult leader at center
-    show community_members at right
-    
+    show ara_adult professional at center
+    # play music "audio/traditional.mp3"
     a "Kesuksesan ini bukan milik aku sendiri."
     a "Mari kita kembangkan seluruh potensi desa!"
     
@@ -1668,9 +1957,6 @@ label community_empowerment:
     menu:
         "Bangun sekolah pertanian modern":
             call agricultural_school_project
-            
-        "Kembangkan koperasi simpan pinjam":
-            call cooperative_bank_project
             
         "Buat pusat pengolahan kopi komunal":
             call processing_center_project
@@ -1681,8 +1967,7 @@ label agricultural_school_project:
     $ knowledge += 30
     
     scene bg agricultural_school
-    show ara_adult teacher at center
-    show young_farmers at right
+    show ara_adult professional at center
     
     a "Ini 'Sekolah Petani Muda Gayo' - tempat ilmu tradisi bertemu teknologi modern."
     
@@ -1696,8 +1981,8 @@ label processing_center_project:
     $ community_income = 150000
     
     scene bg processing_center
-    show ara_adult coordinator at center
-    show workers_happy at right
+    show ara_adult professional at center
+    # show workers_happy at right
     
     a "Dengan pusat pengolahan ini, semua petani bisa produksi kopi berkualitas tinggi."
     a "Nilai tambah tetap di desa, bukan dibawa orang luar."
@@ -1711,9 +1996,9 @@ label processing_center_project:
 # =============================================================================
 
 label sustainable_future:
-    scene bg future_vision
-    show ara_adult wise at center
-    
+    scene bg village_center
+    show ara_adult at center
+    play music "audio/traditional.mp3" fadein 2.0
     n "5 tahun setelah kepulangan Ara..."
     
     a "Dari gadis kota yang bingung, kini aku jadi bagian dari solusi."
@@ -1722,10 +2007,10 @@ label sustainable_future:
     # Achievement summary
     call achievement_summary
     
-    scene bg coffee_plantation_thriving
+    scene bg coffee_plantation_good
     with dissolve
     
-    show ara_adult peaceful at center
+    show ara_adult at right
     show spirit_kakek at left
     
     k "Ara... kakek bangga padamu, nak."
@@ -1737,8 +2022,8 @@ label sustainable_future:
     jump ending_choice
 
 label ending_choice:
-    scene bg sunset_plantation
-    show ara_adult contemplative at center
+    scene bg coffee_plantation_old
+    show ara_adult thinking at center
     
     n "Ara kini menghadapi pilihan untuk masa depan..."
     
@@ -1761,7 +2046,7 @@ label ending_choice:
 
 label ending_entrepreneur:
     scene bg successful_business_empire
-    show ara_adult ceo at center
+    show ara_adult professional at center
     
     n "Ara memilih tetap fokus pada bisnis kopi."
     n "Dalam 10 tahun, dia membangun empire kopi terbesar di Sumatera."
@@ -1779,7 +2064,7 @@ label ending_entrepreneur:
 
 label ending_politician:
     scene bg legislative_building
-    show ara_adult politician at center
+    show ara_adult professional at center
     
     n "Ara terpilih jadi anggota DPR RI dari daerah pemilihan Aceh."
     n "Dia menjadi suara petani di tingkat nasional."
@@ -1793,7 +2078,7 @@ label ending_politician:
 
 label ending_consultant:
     scene bg national_conference
-    show ara_adult expert at center
+    show ara_adult professional at center
     
     n "Ara menjadi konsultan pertanian terkemuka."
     n "Proyek-proyeknya tersebar dari Sabang sampai Merauke."
@@ -1808,7 +2093,7 @@ label ending_consultant:
 
 label ending_author:
     scene bg book_launch
-    show ara_adult author at center
+    show ara_adult at center
     
     n "Buku 'Pulang ke Akar: Perjalanan Seorang Anak Kota Menjadi Petani' menjadi bestseller."
     

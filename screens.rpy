@@ -1534,6 +1534,29 @@ screen quick_menu():
             textbutton _("Otomatis") action Preference("auto-forward", "toggle")
             textbutton _("Menu") action ShowMenu()
 
+screen hud():
+    if hud_visible:
+        frame:
+            xalign 0.98
+            yalign 0.02
+            has vbox
+            spacing 6
+
+            text "Money: [money]"
+            text "Energy: [energy]/100"
+            text "Knowledge: [knowledge]"
+            text "Reputation: [reputation]"
+            text "Day: [day]"
+            text "Season: [current_season]"
+            text "Coffee Plants: [coffee_plants]"
+            text "Harvested Beans: [harvested_beans]"
+
+    # Button to toggle HUD visibility
+    textbutton "[ 'Hide HUD' if hud_visible else 'Show HUD' ]":
+        xalign 0.02
+        yalign 0.02
+        action ToggleVariable("hud_visible")
+
 
 style window:
     variant "small"
