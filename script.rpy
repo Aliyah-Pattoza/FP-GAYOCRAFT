@@ -935,21 +935,15 @@ label planting_phase:
         "Mau tanam jagung (penghasilan 3 bulan, untung sedang)":
             $ money += 30000
             $ knowledge += 10
-<<<<<<< HEAD
             call maintenance_phase
 
-=======
 
->>>>>>> cbd04f0 (add music and character)
         "Mau tanam sayuran (penghasilan 1 bulan, untung kecil tapi cepat)":
             $ money += 15000
             $ knowledge += 5
-<<<<<<< HEAD
             call maintenance_phase
 
-=======
 
->>>>>>> cbd04f0 (add music and character)
         "Fokus ke kopi saja (tidak ada penghasilan tambahan)":
             $ knowledge += 20
             show mahmud:
@@ -1394,12 +1388,9 @@ label prayer_for_rain:
         $ money -= 30000  # Loss from failed fruits
         show mahmud at left
         m "Ini pelajaran penting tentang manajemen risiko."
-<<<<<<< HEAD
+        hide mahmud
         jump first_harvest_prep
-=======
-        hide mahmud
->>>>>>> cbd04f0 (add music and character)
-        hide mahmud
+
 
 # =============================================================================
 # FARMING CYCLE STATE - FIRST HARVEST
