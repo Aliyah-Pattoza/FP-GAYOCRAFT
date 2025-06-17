@@ -30,11 +30,97 @@ image bg coffee_plantation_rain = "images/coffee_plantation_rain.png"
 image bg coffee_plantation_growing = "images/coffee_plantation_growing.png"
 image bg coffee_plantation_month1 = "images/coffee_plantation_month1.png"
 image bg coffee_plantation_month2 = "images/coffee_plantation_month2.png"
+image bg coffee_plantation_month2 = "images/coffee_plantation_month2.png"
 image bg coffee_plantation_problem = "images/coffee_plantation_problem.png"
+image bg coffee_plantation_healthy = "images/coffee_plantation_healthy.png"
+image bg coffee_plantation_pest = "images/coffee_plantation_pest.png"
 image bg coffee_plantation_healthy = "images/coffee_plantation_healthy.png"
 image bg coffee_plantation_pest = "images/coffee_plantation_pest.png"
 image bg coffee_plantation_old = "images/coffee_plantation_old.png"
 image bg coffee_plantation_flowering = "images/coffee_plantation_flowering.png"
+image bg coffee_plantation_young_fruits = "images/coffee_plantation_young_fruits.png"
+image bg coffee_plantation_dry_season = "images/coffee_plantation_dry_season.png"
+image bg coffee_plantation_ripe_fruits = "images/coffee_plantation_ripe_fruits.png"
+image bg coffee_plantation_after_dry_season = "images/coffee_plantation_after_dry_season.png"
+image bg coffee_plantation_expanded = "images/coffee_plantation_expanded.png"
+image bg processing_facility = "images/processing_facility.png"
+image bg drying_beds = "images/drying_beds.png"
+image bg village_market = "images/village_market.png"
+image bg village_hall = "images/village_hall.png"
+image bg kakek_house_exterior = "images/rumah_kakek.png"
+image bg community_hall = "images/community_hall1.png"
+image bg festival_preparation = "images/festival_preparation.png"
+image bg coffee_ceremony = "images/coffee_ceremony.png"
+image bg festival_day = "images/festival_day.png"
+image bg mahmud_house = "images/mahmud_house.png"
+image bg coffee_shop_grand_opening = "images/coffee_shop_grand_opening.png"
+image bg coffee_shop_construction = "images/coffee_shop_construction.png"
+image bg coffee_processing_premium = "images/coffee_processing_premium1.png"
+image bg village_meeting = "images/village_meeting.png"
+image bg training_session = "images/training_session.png"
+image bg certification_process = "images/certification_process.png"
+image bg video_call_international = "images/video_call_international1.png"
+image bg international_coffee_award = "images/international_award.png"
+image bg agrowisata_development = "images/agrowisata_development.png"
+image bg community_meeting = "images/community_meeting.png"
+image bg agricultural_school = "images/agricultural_school.png"
+image bg book_launch = "images/book_launch.png"
+image bg national_conference = "images/national_conference.png"
+image bg legislative_building = "images/legislative_building.png"
+image bg successful_business_empire = "images/successful_business_empire.png"
+image bg processing_center = "images/processing_center.png"
+
+# ARA_CHILD
+image ara_child = "images/ara_child/smile.png"
+image ara_child happy = "images/ara_child/happy.png"
+image ara_child excited = "images/ara_child/excited.png"
+image ara_child curious = "images/ara_child/curious.png"
+
+# ARA_ADULT
+image ara_adult = "images/ara_adult/smile.png"
+image ara_adult tired = "images/ara_adult/tired.png"
+image ara_adult surprised = "images/ara_adult/surprised.png"
+image ara_adult worried = "images/ara_adult/worried.png"
+image ara_adult shocked = "images/ara_adult/shocked.png"
+image ara_adult sad = "images/ara_adult/sad.png"
+image ara_adult thinking = "images/ara_adult/thinking.png"
+image ara_adult determined = "images/ara_adult/determined.png"
+image ara_adult grateful = "images/ara_adult/grateful.png"
+image ara_adult nerveous = "images/ara_adult/nerveous.png"
+image ara_adult emotional = "images/ara_adult/emotional.png"
+image ara_adult professional = "images/ara_adult/professional.png"
+image ara_adult professional emotional = "images/ara_adult/professional_emotional.png"
+
+# IBU_SARI
+image sari = "images/ibu_sari/smile.png"
+image sari concerned = "images/ibu_sari/concerned.png"
+
+# KAKEK_YOUNG
+image kakek_young = "images/kakek_young/smile.png"
+image spirit_kakek = "images/kakek_young/spirit.png"
+
+# MAHMUD
+image mahmud = "images/mahmud/smile.png"
+image mahmud advisor = "images/mahmud/smile.png"
+image mahmud concerned = "images/mahmud/concerned.png"
+image mahmud excited = "images/mahmud/excited.png"
+image mahmud proud = "images/mahmud/smile.png"
+image mahmud examining = "images/mahmud/examining.png"
+
+# KEPALA_DESA
+image kepala_desa = "images/kepala_desa/smile.png"
+image kepala_desa serious = "images/kepala_desa/serious.png"
+
+# VILLAGER
+image villager1 = "images/villager/villager1.png"
+image villager2 = "images/villager/villager2.png"
+image elder = "images/villager/elder.png"
+
+# BUYER
+image buyer = "images/buyer/smile.png"
+image buyer_international = "images/buyer/international.png"
+
+# image bg coffee_plantation_flowering = "images/coffee_plantation_flowering.png"
 image bg coffee_plantation_young_fruits = "images/coffee_plantation_young_fruits.png"
 image bg coffee_plantation_dry_season = "images/coffee_plantation_dry_season.png"
 image bg coffee_plantation_ripe_fruits = "images/coffee_plantation_ripe_fruits.png"
@@ -849,13 +935,21 @@ label planting_phase:
         "Mau tanam jagung (penghasilan 3 bulan, untung sedang)":
             $ money += 30000
             $ knowledge += 10
+<<<<<<< HEAD
             call maintenance_phase
 
+=======
+
+>>>>>>> cbd04f0 (add music and character)
         "Mau tanam sayuran (penghasilan 1 bulan, untung kecil tapi cepat)":
             $ money += 15000
             $ knowledge += 5
+<<<<<<< HEAD
             call maintenance_phase
 
+=======
+
+>>>>>>> cbd04f0 (add music and character)
         "Fokus ke kopi saja (tidak ada penghasilan tambahan)":
             $ knowledge += 20
             show mahmud:
@@ -1300,7 +1394,11 @@ label prayer_for_rain:
         $ money -= 30000  # Loss from failed fruits
         show mahmud at left
         m "Ini pelajaran penting tentang manajemen risiko."
+<<<<<<< HEAD
         jump first_harvest_prep
+=======
+        hide mahmud
+>>>>>>> cbd04f0 (add music and character)
         hide mahmud
 
 # =============================================================================
