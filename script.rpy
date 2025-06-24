@@ -69,6 +69,16 @@ image bg national_conference = "images/national_conference.png"
 image bg legislative_building = "images/legislative_building.png"
 image bg successful_business_empire = "images/successful_business_empire.png"
 image bg processing_center = "images/processing_center.png"
+image bg bedroom = "images/bedroom.jpeg"
+image bg bedroom morning = "images/morning_bed.png"
+image bg library = "images/library.png"
+image bg book = "images/book.png"
+image bg book2 = "images/book2.png"
+image bg book3 = "images/book3.png"
+image bg selada_siap = "images/selada_siap.jpeg"
+image bg selada_bibit = "images/selada_bibit.png"
+image bg selada_muda = "images/selada_muda.png"
+image bg selada_mati = "images/selada_mati.png"
 
 # ARA_CHILD
 image ara_child = "images/ara_child/smile.png"
@@ -119,39 +129,6 @@ image elder = "images/villager/elder.png"
 # BUYER
 image buyer = "images/buyer/smile.png"
 image buyer_international = "images/buyer/international.png"
-
-# image bg coffee_plantation_flowering = "images/coffee_plantation_flowering.png"
-image bg coffee_plantation_young_fruits = "images/coffee_plantation_young_fruits.png"
-image bg coffee_plantation_dry_season = "images/coffee_plantation_dry_season.png"
-image bg coffee_plantation_ripe_fruits = "images/coffee_plantation_ripe_fruits.png"
-image bg coffee_plantation_after_dry_season = "images/coffee_plantation_after_dry_season.png"
-image bg coffee_plantation_expanded = "images/coffee_plantation_expanded.png"
-image bg processing_facility = "images/processing_facility.png"
-image bg drying_beds = "images/drying_beds.png"
-image bg village_market = "images/village_market.png"
-image bg village_hall = "images/village_hall.png"
-image bg kakek_house_exterior = "images/rumah_kakek.png"
-image bg community_hall = "images/community_hall1.png"
-image bg festival_preparation = "images/festival_preparation.png"
-image bg coffee_ceremony = "images/coffee_ceremony.png"
-image bg festival_day = "images/festival_day.png"
-image bg mahmud_house = "images/mahmud_house.png"
-image bg coffee_shop_grand_opening = "images/coffee_shop_grand_opening.png"
-image bg coffee_shop_construction = "images/coffee_shop_construction.png"
-image bg coffee_processing_premium = "images/coffee_processing_premium1.png"
-image bg village_meeting = "images/village_meeting.png"
-image bg training_session = "images/training_session.png"
-image bg certification_process = "images/certification_process.png"
-image bg video_call_international = "images/video_call_international1.png"
-image bg international_coffee_award = "images/international_award.png"
-image bg agrowisata_development = "images/agrowisata_development.png"
-image bg community_meeting = "images/community_meeting.png"
-image bg agricultural_school = "images/agricultural_school.png"
-image bg book_launch = "images/book_launch.png"
-image bg national_conference = "images/national_conference.png"
-image bg legislative_building = "images/legislative_building.png"
-image bg successful_business_empire = "images/successful_business_empire.png"
-image bg processing_center = "images/processing_center.png"
 
 # ARA_CHILD
 image ara_child = "images/ara_child/smile.png"
@@ -207,23 +184,36 @@ image buyer_international = "images/buyer/international.png"
 # =============================================================================
 # VARIABLES
 # =============================================================================
+init:
+    default hud_visible = False
+    default player_name = "Ara"
+    default money = 50000
+    default energy = 100
+    default knowledge = 0
+    default reputation = 0
+    default day = 0
+    default current_season = "Dry"
+    default coffee_plants = 0
+    default harvested_beans = 0
+    default exit_side_quest = False
+    default in_side_quest = False
+    default trigger_return = False
 
-default player_name = "Ara"
-default money = 50000
-default energy = 100
-default knowledge = 0
-default reputation = 0
-default day = 0
-default current_season = "dry"
-default coffee_plants = 0
-default harvested_beans = 0
+show screen energy_block
 
 # =============================================================================
 # INTRO STATE - CHILDHOOD FLASHBACK
 # =============================================================================
 
-default hud_visible = True
 label start:
+    show screen energy_block
+    show screen menu_choice
+    n "Kamu akan memainkan main story."
+    n "Untuk menjalankan main story kamu memerlukan energi."
+    n "Jika energimu 0 maka kamu tidak akan bisa melanjutkan main story."
+    n "Untuk mengisi kembali energimu, kamu bisa menjalankan side quest."
+    n "Pilihan menu berada di bawah icon informasi."
+    n "Selamat memulai."
     scene bg mountain_sunrise
     with fade
     play music "audio/traditional.mp3" fadeout 1.0 fadein 2.0 volume 0.5
@@ -277,13 +267,14 @@ label start:
 # =============================================================================
 
 label city_life:
+    show screen energy_block
+    show screen menu_choice
     scene bg jakarta_office
     with fade
     play music "audio/city.mp3" fadeout 1.0 fadein 2.0 volume 0.5
     
     show ara_adult tired at center
     with easeinbottom
-    
     n "Jakarta, 2025. Ara kini sudah 28 tahun, bekerja sebagai marketing executive di sebuah perusahaan multinasional."
     
     a "Huh... hari ini meeting lagi, deadline lagi..."
@@ -334,6 +325,8 @@ label city_life:
             jump return_decision_2
 
 label return_decision_2:
+    show screen energy_block
+    show screen menu_choice
     show ara_adult thinking
     a "..."
     a "Aku ingat dulu kakek pernah bilang..."
@@ -351,6 +344,8 @@ label return_decision_2:
 # =============================================================================
 
 label return_to_village:
+    show screen energy_block
+    show screen menu_choice
     scene bg village_entrance
     with fade
     play music "audio/village.mp3" fadeout 1.0 fadein 2.0 volume 0.5
@@ -419,6 +414,8 @@ label return_to_village:
 # =============================================================================
 
 label meet_mentor:
+    show screen energy_block
+    show screen menu_choice
     $ day = 1
     scene bg village_center
     with fade
@@ -483,7 +480,8 @@ label meet_mentor:
             jump mentor_accepts
 
 label mentor_accepts:
-
+    show screen energy_block
+    show screen menu_choice
     # Mahmud speaking
     show ara_adult:
         zoom 1.0
@@ -536,6 +534,7 @@ label mentor_accepts:
 # =============================================================================
 
 label first_day_learning:
+    show screen menu_choice
     $ day = 2
     $ energy = 100
     
@@ -660,6 +659,7 @@ label first_day_learning:
 # =============================================================================
 
 label land_preparation:
+    show screen menu_choice
     $ day = 3
     $ energy = 100
     
@@ -818,6 +818,7 @@ label land_preparation:
 # =============================================================================
 
 label planting_phase:
+    show screen menu_choice
     $ day = 5
     $ energy = 100
     
@@ -958,6 +959,7 @@ label planting_phase:
 # =============================================================================
 
 label maintenance_phase:
+    show screen menu_choice
     $ day = 30
     $ energy = 100
     
@@ -1021,6 +1023,7 @@ label maintenance_phase:
             call pruning_treatment
 
 label chemical_treatment:
+    show screen menu_choice
     m "Fungisida memang cepat, tapi hati-hati penggunaannya."
     m "Kalau berlebihan bisa merusak lingkungan."
     m "Dan kopi kita tidak bisa dapat sertifikat organik."
@@ -1030,6 +1033,7 @@ label chemical_treatment:
     jump maintenance_continue
 
 label organic_treatment_sequence:
+    show screen menu_choice
     m "Bagus! Cara organik memang lebih lambat tapi lebih aman."
     m "Kita pakai campuran bawang putih, cabai, dan sabun."
     m "Plus mikroorganisme lokal dari bambu."
@@ -1040,6 +1044,7 @@ label organic_treatment_sequence:
     jump maintenance_continue
 
 label pruning_treatment:
+    show screen menu_choice
     m "Pemangkasan memang bisa membantu."
     m "Tapi kalau tidak tepat, malah bisa melemahkan pohon."
     
@@ -1056,6 +1061,7 @@ label pruning_treatment:
         m "Lain kali sebaiknya pakai cara yang lebih pasti."
 
 label maintenance_continue:
+    show screen menu_choice
     # Fertilizing sequence
     $ day += 30
     scene bg coffee_plantation_month2
@@ -1125,6 +1131,7 @@ label maintenance_continue:
             call organic_spray
 
 label biological_control:
+    show screen menu_choice
     m "Pilihan yang sangat baik!"
     m "Kepik dan predator alami akan jaga keseimbangan ekosistem."
     m "Ini investasi jangka panjang untuk kebun yang sehat."
@@ -1137,6 +1144,7 @@ label biological_control:
     jump maintenance_success
 
 label mechanical_control:
+    show screen menu_choice
     m "Cara yang paling aman untuk lingkungan."
     m "Tapi memang butuh tenaga ekstra dan harus rajin."
     hide mahmud
@@ -1148,6 +1156,7 @@ label mechanical_control:
     jump maintenance_success
 
 label organic_spray:
+    show screen menu_choice
     m "Spray organik juga efektif."
     m "Kita pakai sabun cuci piring yang ramah lingkungan."
     m "Campur dengan minyak goreng sedikit."
@@ -1159,6 +1168,7 @@ label organic_spray:
     n "Cara yang ekonomis dan cukup efektif."
 
 label maintenance_success:
+    show screen menu_choice
     stop music
     # Growth milestone
     $ day += 60
@@ -1208,6 +1218,7 @@ label maintenance_success:
 # =============================================================================
 
 label first_flowering:
+    show screen menu_choice
     $ day += 365  # 1 year after planting
     
     scene bg coffee_plantation_flowering
@@ -1258,6 +1269,7 @@ label first_flowering:
             jump flowering_continue
 
 label beekeeping_start:
+    show screen menu_choice
     m "Bagus! Lebah Trigona cocok untuk daerah sini."
     m "Mereka tidak menyengat dan mudah dirawat."
     m "Plus madunya punya kualitas premium."
@@ -1273,6 +1285,7 @@ label beekeeping_start:
     a "Dan madunya enak sekali!"
 
 label flowering_continue:
+    show screen menu_choice
     # Fruit development
     $ day += 60
     
@@ -1336,6 +1349,7 @@ label flowering_continue:
             call prayer_for_rain
 
 label drip_irrigation_system:
+    show screen menu_choice
     show mahmud at left
     m "Keputusan yang bijak untuk investasi jangka panjang!"
     m "Sistem tetes menghemat air 60 persen dibanding siram manual."
@@ -1353,6 +1367,7 @@ label drip_irrigation_system:
     jump first_harvest_prep
 
 label manual_watering_sequence:
+    show screen menu_choice
     show mahmud at left
     m "Tidak apa-apa. Yang penting konsisten."
     m "Siram pagi dan sore, jangan siang hari."
@@ -1368,6 +1383,7 @@ label manual_watering_sequence:
     jump first_harvest_prep
 
 label prayer_for_rain:
+    show screen menu_choice
     show mahmud at left
     m "Doa memang penting, tapi ikhtiar juga harus maksimal."
     m "Yuk kita coba usaha yang bisa kita lakukan."
@@ -1397,6 +1413,7 @@ label prayer_for_rain:
 # =============================================================================
 
 label first_harvest_prep:
+    show screen menu_choice
     $ day += 120  # 4 months later
     $ energy = 100
     stop music fadeout 2.0
@@ -1448,6 +1465,7 @@ label first_harvest_prep:
 # =============================================================================
 
 label post_harvest_processing:
+    show screen menu_choice
     scene bg processing_facility
     with fade
     
@@ -1484,6 +1502,7 @@ label post_harvest_processing:
             call honey_processing
 
 label natural_processing:
+    show screen menu_choice
     m "Natural processing adalah metode tertua."
     m "Buah kopi dikeringkan langsung tanpa dikupas."
     m "Hasilnya rasa lebih fruity dan sweet."
@@ -1493,6 +1512,7 @@ label natural_processing:
     jump processing_complete
 
 label washed_processing:
+    show screen menu_choice
     m "Washed processing butuh lebih banyak air."
     m "Tapi hasilnya lebih clean dan bright."
     m "Cocok untuk kopi specialty grade."
@@ -1502,6 +1522,7 @@ label washed_processing:
     jump processing_complete
 
 label honey_processing:
+    show screen menu_choice
     m "Honey processing adalah yang paling rumit."
     m "Buah dikupas tapi lendir tidak dicuci bersih."
     m "Butuh skill tinggi untuk tidak over-fermentasi."
@@ -1519,6 +1540,7 @@ label honey_processing:
     $ day += 14
 
 label processing_complete:
+    show screen menu_choice
     # Drying completion
     scene bg drying_beds
     with fade
@@ -1551,6 +1573,7 @@ label processing_complete:
 # =============================================================================
 
 label first_marketing:
+    show screen menu_choice
     scene bg village_market
     with fade
     stop music fadeout 2.0
@@ -1597,6 +1620,7 @@ label first_marketing:
             jump find_other_buyer
 
 label price_negotiation_game:
+    show screen menu_choice
     hide buyer
     show ara_adult at right
     a "Bu, boleh tidak harganya 50.000 per kilo?"
@@ -1625,6 +1649,7 @@ label price_negotiation_game:
         jump tough_decision
 
 label tough_decision:
+    show screen menu_choice
     menu:
         "Terima tawaran 45.000 (pragmatis)":
             $ money += 1350000
@@ -1638,6 +1663,7 @@ label tough_decision:
             jump find_other_buyer
 
 label find_other_buyer:
+    show screen menu_choice
     n "Ara memutuskan mencari pembeli lain..."
     
     # Random outcome
@@ -1660,6 +1686,7 @@ label find_other_buyer:
         hide ara_adult
 
 label first_sale_complete:
+    show screen menu_choice
     show ara_adult
     a "Alhamdulillah! Penjualan pertama berhasil!"
     a "Dengan uang ini, bisa buat modal panen berikutnya!"
@@ -1691,6 +1718,7 @@ label first_sale_complete:
 # =============================================================================
 
 label harvest_festival:
+    show screen menu_choice
     $ day += 30
     scene bg festival_preparation
     with fade
@@ -1768,6 +1796,7 @@ label harvest_festival:
 # =============================================================================
 
 label business_expansion:
+    show screen menu_choice
     $ day += 90  # 3 months later
     $ energy = 100
     
@@ -1805,6 +1834,7 @@ label business_expansion:
             call premium_quality_focus
  
 label land_expansion:
+    show screen menu_choice
     $ money -= 150000
     $ coffee_plants += 100
     $ knowledge += 25
@@ -1828,6 +1858,7 @@ label land_expansion:
     jump cooperative_invitation
 
 label join_cooperative:
+    show screen menu_choice
     $ knowledge += 20
     $ reputation += 25
     
@@ -1855,6 +1886,7 @@ label join_cooperative:
     jump organic_certification
 
 label coffee_shop_venture:
+    show screen menu_choice
     $ money -= 200000
     $ knowledge += 30
     $ reputation += 20
@@ -1883,6 +1915,7 @@ label coffee_shop_venture:
     jump tourism_development
 
 label premium_quality_focus:
+    show screen menu_choice
     $ knowledge += 35
     $ reputation += 10
     
@@ -1904,6 +1937,7 @@ label premium_quality_focus:
 # =============================================================================
 
 label cooperative_invitation:
+    show screen menu_choice
     scene bg village_meeting
     show kepala_desa at left
     
@@ -1928,6 +1962,7 @@ label cooperative_invitation:
             jump organic_certification
 
 label organic_certification_leader:
+    show screen menu_choice
     scene bg training_session
     show ara_adult at center
     
@@ -1943,6 +1978,7 @@ label organic_certification_leader:
     jump international_buyer
 
 label organic_certification:
+    show screen menu_choice
     scene bg coffee_plantation_ripe_fruits
     show ara_adult at right
     show elder at left
@@ -1963,6 +1999,7 @@ label organic_certification:
 # =============================================================================
 
 label international_buyer:
+    show screen menu_choice
     stop music fadeout 2.0
     scene bg video_call_international
     show ara_adult professional at right
@@ -1988,6 +2025,7 @@ label international_buyer:
     jump sustainable_future
 
 label international_recognition:
+    show screen menu_choice
     scene bg international_coffee_award
     show ara_adult professional at left:
         xzoom -1.0
@@ -2012,6 +2050,7 @@ label international_recognition:
 # =============================================================================
 
 label tourism_development:
+    show screen menu_choice
     scene bg agrowisata_development
     show ara_adult at center
     play music "audio/city.mp3"
@@ -2038,6 +2077,7 @@ label tourism_development:
 # =============================================================================
 
 label community_empowerment:
+    show screen menu_choice
     scene bg community_meeting
     show ara_adult professional at center
     # play music "audio/traditional.mp3"
@@ -2053,6 +2093,7 @@ label community_empowerment:
             call processing_center_project
 
 label agricultural_school_project:
+    show screen menu_choice
     $ money -= 300000
     $ reputation += 50
     $ knowledge += 30
@@ -2068,6 +2109,7 @@ label agricultural_school_project:
     jump sustainable_future
 
 label processing_center_project:
+    show screen menu_choice
     $ money -= 250000
     $ community_income = 150000
     
@@ -2087,6 +2129,7 @@ label processing_center_project:
 # =============================================================================
 
 label sustainable_future:
+    show screen menu_choice
     scene bg village_center
     show ara_adult at center
     play music "audio/traditional.mp3" fadein 2.0
@@ -2110,6 +2153,7 @@ label sustainable_future:
     jump ending_choice
 
 label ending_choice:
+    show screen menu_choice
     scene bg coffee_plantation_old
     show ara_adult thinking at center
     
@@ -2133,6 +2177,7 @@ label ending_choice:
 # =============================================================================
 
 label ending_entrepreneur:
+    show screen menu_choice
     scene bg successful_business_empire
     show ara_adult professional at center
     
@@ -2151,6 +2196,7 @@ label ending_entrepreneur:
     jump credits
 
 label ending_politician:
+    show screen menu_choice
     scene bg legislative_building
     show ara_adult professional at center
     
@@ -2165,6 +2211,7 @@ label ending_politician:
     jump credits
 
 label ending_consultant:
+    show screen menu_choice
     scene bg national_conference
     show ara_adult professional at center
     
@@ -2180,6 +2227,7 @@ label ending_consultant:
     jump credits
 
 label ending_author:
+    show screen menu_choice
     scene bg book_launch
     show ara_adult at center
     
@@ -2220,4 +2268,256 @@ label credits:
     centered "\n\n{i}Terima kasih telah bermain GAYOCRAFT!{/i}"
     centered "{i}Mari lestarikan warisan kopi nusantara{/i}"
     
+    return
+
+label achievement_summary:
+    # Display player achievements
+    n "PENCAPAIAN ANDA:"
+    n "Uang: Rp [money:,]"
+    n "Reputasi: [reputation]/100"
+    n "Pengetahuan: [knowledge]/100"
+    n "Hari bermain: [day]"
+    return
+
+# =============================================================================
+# SIDE QUEST
+# =============================================================================
+
+label side_quest:
+    play music "audio/city.mp3" loop fadeout 1.0 fadein 2.0 volume 0.5 
+    $ in_side_quest = True
+    $ exit_side_quest = False
+
+    show screen menu_choice
+    show screen hud
+    show screen exit_checker
+
+    scene bg mountain_sunrise
+    show ara_adult
+
+    a "Halo."
+    a "Bantu aku mengumpulkan knowledge, money, reputation, dan energy dengan mengerjakan task di sini."
+    a "Kamu bisa membantuku melakukan beberapa task."
+    a "Task mana yang akan kamu pilih?"
+
+label side_quest_menu:
+    
+    scene bg mountain_sunrise
+    show ara_adult
+    show screen menu_choice
+    show screen hud
+    show screen exit_checker
+    menu:
+        "Pilih side quest:"
+        "Tidur":
+            call rest_activity
+            jump side_quest_menu
+        "Membaca Buku":
+            call farming_book_activity
+            jump side_quest_menu
+        "Menanam Sayur":
+            call planting_vegetables
+            jump side_quest_menu
+        "Kembali ke Main Story":
+            jump _return_from_side_quest
+
+label rest_activity:
+    show screen menu_choice
+    show screen hud
+    show screen exit_checker
+    scene bg bedroom
+    show ara_adult tired
+
+    a "Hari ini aku telah melakukan banyak sekali aktivitas."
+    a "Energiku benar-benar habis terkuras."
+    a "Akhirnya aku bisa beristirahat."
+    menu:
+        "Berapa lama kamu akan tidur?"
+
+        "8 jam":
+            "Aku akan tidur selama 8 jam."
+            scene bg bedroom morning
+            $ temp = energy
+            $ energy += 80
+            if energy > 100:
+                show ara_adult tired
+                "Ugh... aku pusing sekali..."
+                "Sepertinya aku terlalu banyak tidur...."
+                $ energy = temp
+            else:
+                show ara_adult
+                "Tidurku nyenyak sekali."
+                "Akhirnya aku mendapat tidur yang cukup."
+
+            a "Energi bertambah menjadi [energy]!"
+        
+        "6 jam":
+            "Aku akan tidur selama 6 jam."
+            scene bg bedroom morning
+            $ temp = energy
+            $ energy += 60
+            if energy > 100:
+                show ara_adult tired
+                "Ugh... aku pusing sekali..."
+                "Sepertinya aku terlalu banyak tidur...."
+                $ energy = temp
+            else:
+                show ara_adult
+                "Tidurku nyenyak sekali."
+                "Akhirnya aku mendapat tidur yang cukup."
+
+            a "Energi bertambah menjadi [energy]!"
+
+        "4 jam":
+            "Aku akan tidur selama 4 jam."
+            scene bg bedroom morning
+            $ temp = energy
+            $ energy += 40
+            if energy > 100:
+                show ara_adult tired
+                "Ugh... aku pusing sekali..."
+                "Sepertinya aku terlalu banyak tidur...."
+                $ energy = temp
+            else:
+                show ara_adult
+                "Tidurku nyenyak sekali."
+                "Akhirnya aku mendapat tidur yang cukup."
+
+            a "Energi bertambah menjadi [energy]!"
+        
+        "2 jam":
+            "Aku akan tidur selama 2 jam."
+            scene bg bedroom morning
+            $ temp = energy
+            $ energy += 20
+            if energy > 100:
+                show ara_adult tired
+                "Ugh... aku pusing sekali..."
+                "Sepertinya aku terlalu banyak tidur...."
+                $ energy = temp
+            else:
+                show ara_adult
+                "Tidurku nyenyak sekali."
+                "Akhirnya aku mendapat tidur yang cukup."
+
+            a "Energi bertambah menjadi [energy]!"
+    return
+
+
+label farming_book_activity:
+    scene bg library
+    show ara_adult
+
+    a "Hmm... Terdapat banyak sekali buku di sini."
+    a "Ada rak-rak penuh dengan novel, buku pertanian, buku marketing, dan lainnya."
+    a "Kupikir, membaca bisa membantuku meningkatkan pengetahuanku."
+
+    menu:
+        "Buku apa yang akan kamu baca?"
+        
+        "Buku Pertanian":
+            a "Karena aku sedang belajar menanam kopi, membaca buku pertanian terdengar seperti ide bagus."
+            scene bg book2
+            a "Aku mulai membaca dari bab tentang pemupukan alami dan pengelolaan lahan."
+
+            $ knowledge += 10
+
+            menu:
+                "Lanjut membaca 10 halaman lagi":
+                    scene bg book
+                    a "Buku ini sangat menarik. Aku jadi tahu lebih banyak mengenai jenis tanah dan teknik irigasi."
+                    $ knowledge += 10
+                    a "Wah, pengetahuanku meningkat menjadi [knowledge]!"
+                    return
+
+                "Hentikan membaca":
+                    a "Cukup untuk sekarang. Pengetahuanku bertambah menjadi [knowledge]."
+                    return
+
+        "Buku Marketing":
+            a "Marketing juga penting. Aku ingin belajar cara memasarkan hasil kebunku nanti."
+            scene bg book3
+            a "Bab pertama membahas dasar-dasar promosi dan mengenali target pasar."
+
+            $ knowledge += 5
+            $ reputation += 5
+
+            a "Sepertinya ini akan berguna suatu saat nanti."
+            a "Pengetahuanku meningkat menjadi [knowledge], reputasiku juga naik menjadi [reputation]!"
+            return
+
+        "Novel":
+            a "Kadang, kita juga butuh hiburan. Aku ambil sebuah novel fiksi dari rak."
+
+            scene bg book3
+            a "Cerita ini sangat seru... Tentang seorang petani muda yang ingin menyelamatkan ladangnya dari kekeringan."
+
+            $ energy += 5
+
+            a "Meskipun tidak menambah pengetahuan teknis, aku merasa lebih rileks."
+            a "Energi bertambah menjadi [energy]."
+            return
+    return
+
+label planting_vegetables:
+    $ water = 0
+    $ fertilizer = 0
+    $ lettuce_stage = "bibit"
+    $ planting_day = 0
+    $ is_dead = False
+
+    label planting_loop:
+        if is_dead:
+            scene bg selada_mati
+            show ara_adult sad
+            a "Sayangnya, selada yang kutanam mati... Mungkin aku terlalu banyak menyiram atau memberi pupuk."
+            hide screen planting_menu
+            return
+
+        if lettuce_stage == "siap":
+            scene bg selada_siap
+            show ara_adult
+            a "Seladaku sudah siap dipanen!"
+            $ money += 200000
+            $ reputation += 10~~
+            a "Aku mendapatkan uang dan reputasi karena berhasil memanen!"
+            hide screen planting_menu
+            return
+
+        if lettuce_stage == "bibit":
+            scene bg selada_bibit
+        elif lettuce_stage == "muda":
+            scene bg selada_muda
+
+        show screen planting_menu
+        show ara_adult
+
+        a "Hari ke-[planting_day]. Seladaku masih dalam tahap '[lettuce_stage]'."
+        a "Aku harus merawatnya dengan baik."
+
+        "(Gunakan menu untuk menyiram atau memberi pupuk.)"
+
+        $ planting_day += 10
+
+        if water > 100 or fertilizer > 100:
+            $ is_dead = True
+        elif planting_day == 10 and water < 10:
+            $ is_dead = True
+        elif planting_day == 20 and water < 20:
+            $ is_dead = True
+        elif planting_day == 20 and water >= 20 and fertilizer >= 10:
+            $ lettuce_stage = "muda"
+        elif planting_day == 30 and water < 30 and fertilizer < 20:
+            $ is_dead = True
+        elif planting_day == 30 and water >= 30 and fertilizer >= 20:
+            $ lettuce_stage = "muda"
+        elif planting_day == 40:
+            $ lettuce_stage = "siap"
+
+        jump planting_loop
+
+
+label _return_from_side_quest:
+    $ in_side_quest = False
+    $ exit_side_quest = False
     return

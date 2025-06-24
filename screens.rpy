@@ -350,58 +350,57 @@ style navigation_button_text:
 
 screen main_menu():
 
-    ## Ini Memastikan Layar Menu Yang Lain Telah Di Timpa
     tag menu
 
-    add gui.main_menu_background
+    window:
+        style "mm_root"
+        background "gui/Frame 1 (2).png"  # your full background with built-in text
 
-    ## Frame kosong ini menggelap di menu utama.
-    frame:
-        style "main_menu_frame"
+    # Button image + centered "Mulai" text
+    imagebutton:
+        idle "gui/Rectangle 1.png"
+        action Start()
+        xalign 0.5
+        ypos 0.7  # adjust as needed to match image alignment
+        at transform:
+            zoom 1.0
 
-    ## Pernyataan 'use' mengikutsertakan layar lain ke layar ini. Isi sebenarnya
-    ## dari menu utama adalah layar navigasi.
-    use navigation
-
-    if gui.show_name:
-
-        vbox:
-            style "main_menu_vbox"
-
-            text "[config.name!t]":
-                style "main_menu_title"
-
-            text "[config.version]":
-                style "main_menu_version"
+    text "Mulai":
+        size 64
+        color "#FFFFFF"
+        font "font/SourceSerifPro-Light.otf"
+        xalign 0.5
+        ypos 0.715
 
 
-style main_menu_frame is empty
-style main_menu_vbox is vbox
-style main_menu_text is gui_text
-style main_menu_title is main_menu_text
-style main_menu_version is main_menu_text
 
-style main_menu_frame:
-    xsize 420
-    yfill True
+# style main_menu_frame is empty
+# style main_menu_vbox is vbox
+# style main_menu_text is gui_text
+# style main_menu_title is main_menu_text
+# style main_menu_version is main_menu_text
 
-    background "gui/overlay/main_menu.png"
+# style main_menu_frame:
+#     xsize 420
+#     yfill True
 
-style main_menu_vbox:
-    xalign 1.0
-    xoffset -30
-    xmaximum 1200
-    yalign 1.0
-    yoffset -30
+#     background "gui/overlay/main_menu.png"
 
-style main_menu_text:
-    properties gui.text_properties("main_menu", accent=True)
+# style main_menu_vbox:
+#     xalign 1.0
+#     xoffset -30
+#     xmaximum 1200
+#     yalign 1.0
+#     yoffset -30
 
-style main_menu_title:
-    properties gui.text_properties("title")
+# style main_menu_text:
+#     properties gui.text_properties("main_menu", accent=True)
 
-style main_menu_version:
-    properties gui.text_properties("version")
+# style main_menu_title:
+#     properties gui.text_properties("title")
+
+# style main_menu_version:
+#     properties gui.text_properties("version")
 
 
 ## layar Menu Permainan ########################################################
@@ -1535,28 +1534,164 @@ screen quick_menu():
             textbutton _("Menu") action ShowMenu()
 
 screen hud():
+    frame:
+        xalign 0.01
+        yalign 0.01
+        background None
+        has vbox:
+            spacing 5
+
+        # Energy bar with icon
+        hbox:
+            spacing 4
+            add "gui/icons/energy.png" xsize 30 ysize 30
+            bar:
+                value energy
+                range 100
+                xsize 200
+                ysize 30
+                left_bar "gui/icons/energy_fill.png"
+                right_bar "gui/icons/energy_base.png"
+                thumb None
+
+        # Day
+        hbox:
+            spacing 4
+            add "gui/icons/day.png" xsize 30 ysize 30
+            text "Day [day]" color "#000000" size 30
+
+        # Season
+        hbox:
+            spacing 4
+            add "gui/icons/season.png" xsize 30 ysize 30
+            text "[current_season]" color "#000000" size 30
+
+    imagebutton:
+        idle "gui/icons/information.png"
+        hover "gui/icons/information.png" 
+        action ToggleVariable("hud_visible")
+        xalign 0.98
+        yalign 0.01
+
+    # Info panel (toggle)
     if hud_visible:
         frame:
-            xalign 0.98
-            yalign 0.02
-            has vbox
-            spacing 6
+            background Solid("#000000AA")
+            padding (15, 15)
+            xalign 0.5
+            yalign 0.5
+            xsize 600
+            has vbox:
+                spacing 10
 
-            text "Money: [money]"
-            text "Energy: [energy]/100"
-            text "Knowledge: [knowledge]"
-            text "Reputation: [reputation]"
-            text "Day: [day]"
-            text "Season: [current_season]"
-            text "Coffee Plants: [coffee_plants]"
-            text "Harvested Beans: [harvested_beans]"
+                hbox:
+                    spacing 8
+                    add "gui/icons/money.png" xsize 30 ysize 30
+                    text "Money" size 30 color "#FFFFFF"
+                    frame:
+                        background None
+                        xfill True
+                        text "[money]" size 30 color "#FFFFFF" xalign 1.0
 
-    # Button to toggle HUD visibility
-    textbutton "[ 'Hide HUD' if hud_visible else 'Show HUD' ]":
-        xalign 0.02
-        yalign 0.02
-        action ToggleVariable("hud_visible")
+                hbox:
+                    spacing 8
+                    add "gui/icons/knowledge.png" xsize 30 ysize 30
+                    text "Knowledge" size 30 color "#FFFFFF"
+                    frame:
+                            background None
+                            xfill True
+                            text "[knowledge]" size 30 color "#FFFFFF" xalign 1.0
 
+                hbox:
+                    spacing 8
+                    add "gui/icons/reputation.png" xsize 30 ysize 30
+                    text "Reputation" size 30 color "#FFFFFF"
+                    frame:
+                            background None
+                            xfill True
+                            text "[reputation]" size 30 color "#FFFFFF" xalign 1.0
+
+                hbox:
+                    spacing 8
+                    add "gui/icons/plant.png" xsize 30 ysize 30
+                    text "Coffee Plants" size 30 color "#FFFFFF"
+                    frame:
+                        background None
+                        xfill True
+                        text "[coffee_plants]" size 30 color "#FFFFFF" xalign 1.0
+
+                hbox:
+                    spacing 8
+                    add "gui/icons/bean.png" xsize 30 ysize 30
+                    text "Harvested Beans" size 30 color "#FFFFFF"
+                    frame:
+                        background None
+                        xfill True
+                        text "[harvested_beans]" size 30 color "#FFFFFF" xalign 1.0
+
+default menu_choice_shown = False
+
+screen menu_choice():
+    imagebutton:
+        idle "gui/icons/choice1.png"
+        hover "gui/icons/choice1.png"
+        action ToggleVariable("menu_choice_shown")
+        xalign 0.98
+        yalign 0.1
+
+    if menu_choice_shown:
+        frame:
+            background Solid("#000000AA")
+            padding (15, 15)
+            xalign 0.5
+            yalign 0.5
+            xsize 600
+
+            vbox:
+                spacing 30
+                xalign 0.5
+                yalign 0.5
+
+                if energy > 0:
+                    textbutton "Main Story" action [SetVariable("menu_choice_shown", False)]
+                    textbutton "Side Quest" action [
+                        SetVariable("menu_choice_shown", False),
+                        Function(renpy.call_in_new_context, "side_quest")
+                    ]
+                else:
+                    text "Energi habis. Silakan istirahat melalui Side Quest."
+
+                    
+                # text "Choose Activity" size 30 xalign 0.5 color "#ffffff"
+                
+                # if energy > 0:
+                #     textbutton "Continue Main Story":
+                #         action [
+                #             SetVariable("menu_choice_shown", False),
+                #             SetVariable("in_side_quest", False),
+                #             Function(renpy.jump, current_story_label)
+                #         ]
+                #         text_size 20
+                #         xalign 0.5
+                # else:
+                #     text "Main Story (No Energy)" size 20 xalign 0.5 color "#666666"
+
+                # textbutton "Side Quest":
+                #     action [
+                #         SetVariable("menu_choice_shown", False),
+                #         Call("side_quest")
+                #     ]
+                #     text_size 20
+                #     xalign 0.5
+
+                # textbutton "Close":
+                #     action SetVariable("menu_choice_shown", False)
+                #     text_size 20
+                #     xalign 0.5
+
+
+screen menu_choice_stopper():
+    modal True
 
 style window:
     variant "small"
@@ -1637,3 +1772,55 @@ style slider_vbox:
 style slider_slider:
     variant "small"
     xsize 900
+
+screen exit_checker():
+    if in_side_quest and exit_side_quest:
+        timer 0.1 action Jump("_return_from_side_quest")
+
+screen energy_block():
+    if energy <= 0:
+        modal True
+
+        frame:
+            background Solid("#000000AA")
+            padding (30, 30)
+            xalign 0.5
+            yalign 0.5
+            xsize 1000
+            ysize 300
+
+            vbox:
+                spacing 20
+                text "Kamu terlalu lelah. Kamu harus beristirahat terlebih dahulu."
+                text "Cerita utama dan menu diblokir sementara."
+
+        timer 2.0 action Function(renpy.call_in_new_context, "rest_activity")
+
+
+screen planting_menu():
+    frame:
+            background Solid("#000000AA")
+            padding (15, 15)
+            xalign 0.5
+            yalign 0.01
+            xsize 600
+            has vbox:
+                spacing 10
+
+                hbox:
+                    text "Air" size 30 color "#FFFFFF"
+                    frame:
+                                background None
+                                xfill True
+                                text "[water]" size 30 color "#FFFFFF" xalign 1.0
+                hbox:
+                    text "Pupuk" size 30 color "#FFFFFF"
+                    frame:
+                                background None
+                                xfill True
+                                text "[fertilizer]" size 30 color "#FFFFFF" xalign 1.0
+
+            textbutton "Tambahkan Air" action SetVariable("water", water + 15)
+            textbutton "Tambahkan Pupuk" action SetVariable("fertilizer", fertilizer + 10)
+
+        
