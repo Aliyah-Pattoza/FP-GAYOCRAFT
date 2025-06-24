@@ -1,0 +1,4 @@
+# Ren'Py generated files
+*.rpyc
+cache/
+saves/
