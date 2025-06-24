@@ -2479,7 +2479,7 @@ label planting_vegetables:
             show ara_adult
             a "Seladaku sudah siap dipanen!"
             $ money += 200000
-            $ reputation += 10~~
+            $ reputation += 10
             a "Aku mendapatkan uang dan reputasi karena berhasil memanen!"
             hide screen planting_menu
             return
